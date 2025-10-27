@@ -1,0 +1,9 @@
+namespace HospitalSystem.Models
+{
+	public interface IHospitalRepository
+	{
+		IQueryable<Appointment> Appointments { get; }
+		void SaveAppointment(Appointment appointment);
+		void DeleteAppointment(Appointment appointment);
+	}
+}

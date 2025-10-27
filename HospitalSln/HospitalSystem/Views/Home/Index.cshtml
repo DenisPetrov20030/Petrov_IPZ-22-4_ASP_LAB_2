@@ -1,0 +1,182 @@
+@{
+    ViewData["Title"] = "Головна сторінка";
+}
+
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold mb-3">
+            <i class="bi bi-hospital text-teal"></i> Ласкаво просимо до
+            <span class="text-violet">HospitalSystem</span>
+        </h1>
+        <p class="lead text-muted">
+            Онлайн-запис до лікарів, перегляд розкладу та нагадування — все в одному місці.
+        </p>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="row g-4 justify-content-center">
+        <!-- Переглянути записи -->
+        <div class="col-md-5 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="icon-wrapper teal">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h5 class="card-title fw-semibold">Переглянути записи</h5>
+                    <p class="text-muted">Ознайомтесь із запланованими прийомами пацієнтів.</p>
+                    <a href="/Appointments" class="btn btn-outline-teal mt-2">
+                        <i class="bi bi-arrow-right"></i> Перейти
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Створити запис -->
+        <div class="col-md-5 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="icon-wrapper violet">
+                        <i class="bi bi-plus-circle"></i>
+                    </div>
+                    <h5 class="card-title fw-semibold">Створити запис</h5>
+                    <p class="text-muted">Запишіться на прийом до свого лікаря за кілька кліків.</p>
+                    <a href="/Appointments/Create" class="btn btn-violet mt-2">
+                        <i class="bi bi-plus"></i> Створити
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Alert -->
+    <div class="alert alert-custom mt-5 text-center">
+        <i class="bi bi-info-circle"></i>
+        <span class="ms-2">Використовуйте меню нагорі для зручної навігації по системі.</span>
+    </div>
+</div>
+
+<!-- === СТИЛІ === -->
+<style>
+    /* === Нові кольори === */
+    :root {
+        --teal-color: #20c997;
+        --violet-color: #6f42c1;
+        --light-bg: #f8f9fa;
+        --text-muted: #6c757d;
+    }
+
+    body {
+        background-color: var(--light-bg);
+    }
+
+    /* === Заголовки === */
+    h1.display-5 {
+        color: var(--teal-color);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .text-teal {
+        color: var(--teal-color) !important;
+    }
+
+    .text-violet {
+        color: var(--violet-color) !important;
+    }
+
+    .lead {
+        color: var(--text-muted);
+    }
+
+    /* === Картки === */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+        background: #fff;
+    }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card .card-body {
+            padding: 2rem 1.5rem;
+        }
+
+    /* === Іконки === */
+    .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 2.5rem;
+        transition: all 0.3s ease;
+    }
+
+        .icon-wrapper.teal {
+            background-color: rgba(32, 201, 151, 0.1);
+            color: var(--teal-color);
+        }
+
+        .icon-wrapper.violet {
+            background-color: rgba(111, 66, 193, 0.1);
+            color: var(--violet-color);
+        }
+
+    .card:hover .icon-wrapper.teal {
+        background-color: rgba(32, 201, 151, 0.15);
+        transform: scale(1.05);
+    }
+
+    .card:hover .icon-wrapper.violet {
+        background-color: rgba(111, 66, 193, 0.15);
+        transform: scale(1.05);
+    }
+
+    /* === Кнопки === */
+    .btn {
+        border-radius: 50px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .btn-outline-teal {
+        color: var(--teal-color);
+        border: 1px solid var(--teal-color);
+    }
+
+        .btn-outline-teal:hover {
+            background-color: var(--teal-color);
+            color: #fff;
+        }
+
+    .btn-violet {
+        background-color: var(--violet-color);
+        border: none;
+        color: #fff;
+    }
+
+        .btn-violet:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+    /* === Інфо-блок === */
+    .alert-custom {
+        border-radius: 1rem;
+        font-size: 1.05rem;
+        background-color: rgba(111, 66, 193, 0.05);
+        border: 1px solid rgba(111, 66, 193, 0.15);
+    }
+
+        .alert-custom i {
+            color: var(--violet-color);
+        }
+</style>

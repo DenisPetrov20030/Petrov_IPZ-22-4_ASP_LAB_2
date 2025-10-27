@@ -1,0 +1,8 @@
+﻿namespace HospitalSystem.Models.ViewModels
+{
+    public class AppointmentsListViewModel
+    {
+        public IEnumerable<Appointment> Appointments { get; set; } = Enumerable.Empty<Appointment>();
+        public PagingInfo PagingInfo { get; set; } = new PagingInfo();
+    }
+}
