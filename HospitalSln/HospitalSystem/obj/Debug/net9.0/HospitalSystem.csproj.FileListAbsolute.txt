@@ -660,3 +660,474 @@ D:\Уроки\ASP\Лаба 2\HospitalSln\HospitalSystem\obj\Debug\net9.0\refint\
 D:\Уроки\ASP\Лаба 2\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.pdb
 D:\Уроки\ASP\Лаба 2\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.genruntimeconfig.cache
 D:\Уроки\ASP\Лаба 2\HospitalSln\HospitalSystem\obj\Debug\net9.0\ref\HospitalSystem.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\appsettings.Development.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\appsettings.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\global.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\libman.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.staticwebassets.runtime.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.staticwebassets.endpoints.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.exe
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.deps.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.runtimeconfig.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.pdb
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Azure.Core.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Azure.Identity.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Humanizer.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Data.Sqlite.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\SQLitePCLRaw.core.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.ClientModel.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.CodeDom.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Drawing.Common.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Memory.Data.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Runtime.Caching.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Security.Permissions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Windows.Extensions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\browser-wasm\nativeassets\net9.0\e_sqlite3.a
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-ppc64le\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.csproj.AssemblyReference.cache
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.AssemblyInfoInputs.cache
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.AssemblyInfo.cs
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.csproj.CoreCompileInputs.cache
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.RazorAssemblyInfo.cache
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.RazorAssemblyInfo.cs
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\scopedcss\bundle\HospitalSystem.styles.css
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\o20o2mc8t2-iyxtrf9n29.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\buvh2h1qe6-gaqwphjnqn.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\wfxwnuj2tl-op3q0d4uus.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\ph4b05drzv-sovr1pp57m.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\k6dhdlycod-5pwy7nub07.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\uveo2171vo-uyc8cyps1s.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\6m0rq4sag5-ne57bdxjuj.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\gym0a1g78q-r7fcis5f5w.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\b0j8elg4ya-nrpna8cf75.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\6coud1ca4t-abqchyd4ey.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\g312k2lqfu-ys0tp634q1.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\v8mohrql56-6kh6g3t9s6.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\5yx12wykjf-kvptquwi5m.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\h2vn1t2k13-z27kpi724c.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\10t5qgry04-319oe6hm1a.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\p07xyuwu3c-wyzj39ldk5.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\87wi7jsrzj-w86an8unwv.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\p27g59uavc-sul8q0jcid.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\5d9vvp2zbe-gny46ggofn.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\e2j3ewf7lh-2bo1c34vsp.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\huf4iu4tae-bd53rrli13.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\9kau8aazvq-9gq32dhbrm.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\mszvsnpt7j-cxu00ep3kh.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\cgfmxli796-rh0m0hz4su.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\ngjoh5h26w-scctfxapvb.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\hdiyqoxfne-b59oeg5zbp.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\m34nmbl4zw-t7g9wg1led.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\g6z73k2lqz-8odm1nyag1.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\b8fwtado4z-xr0c4l8jan.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\wbpgn4qrq6-8h82c988d2.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\dewbats2id-5mpc99bmbb.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\lgx7ovtypv-ys2tyb6s49.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\wjtbsfs5qp-coucdleqvw.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\7r27bpqxh6-u6djazel9b.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\tdxscva4ep-kq3enx1zfc.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\ca83mzrwnx-259makaqpv.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\yaejhh3af0-dvuf5es4er.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\q7bhmdhc05-ld7xckwkli.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\4nhtykrelc-w0gms4gy0v.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\q9axaej2w4-za30oyn8rw.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\jht6kifwp2-i62jd590hj.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\g1848vn7jn-ir474ug6zy.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\zjuquf0yc9-7g5exmj95a.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\lo5jgfcj1x-a2c1phmbzv.gz
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.development.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\Hospital.01BB3FEA.Up2Date
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\refint\HospitalSystem.dll
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.pdb
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.genruntimeconfig.cache
+D:\Projects\ZTU\ASP\Lab3\HospitalSln\HospitalSystem\obj\Debug\net9.0\ref\HospitalSystem.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\appsettings.Development.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\appsettings.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\global.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\libman.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.staticwebassets.endpoints.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.staticwebassets.runtime.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.exe
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.deps.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.runtimeconfig.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\HospitalSystem.pdb
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Azure.Core.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Azure.Identity.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Humanizer.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Data.Sqlite.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\SQLitePCLRaw.core.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.ClientModel.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.CodeDom.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Drawing.Common.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Memory.Data.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Runtime.Caching.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Security.Permissions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\System.Windows.Extensions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\browser-wasm\nativeassets\net9.0\e_sqlite3.a
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-ppc64le\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.csproj.AssemblyReference.cache
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.AssemblyInfoInputs.cache
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.AssemblyInfo.cs
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.csproj.CoreCompileInputs.cache
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.MvcApplicationPartsAssemblyInfo.cache
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.RazorAssemblyInfo.cache
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.RazorAssemblyInfo.cs
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.sourcelink.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\scopedcss\bundle\HospitalSystem.styles.css
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\o20o2mc8t2-iyxtrf9n29.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\buvh2h1qe6-gaqwphjnqn.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\wfxwnuj2tl-op3q0d4uus.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\ph4b05drzv-sovr1pp57m.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\k6dhdlycod-5pwy7nub07.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\uveo2171vo-uyc8cyps1s.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\6m0rq4sag5-ne57bdxjuj.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\gym0a1g78q-r7fcis5f5w.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\b0j8elg4ya-nrpna8cf75.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\6coud1ca4t-abqchyd4ey.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\g312k2lqfu-ys0tp634q1.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\v8mohrql56-6kh6g3t9s6.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\5yx12wykjf-kvptquwi5m.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\h2vn1t2k13-z27kpi724c.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\10t5qgry04-319oe6hm1a.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\p07xyuwu3c-wyzj39ldk5.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\87wi7jsrzj-w86an8unwv.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\p27g59uavc-sul8q0jcid.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\5d9vvp2zbe-gny46ggofn.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\e2j3ewf7lh-2bo1c34vsp.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\huf4iu4tae-bd53rrli13.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\9kau8aazvq-9gq32dhbrm.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\mszvsnpt7j-cxu00ep3kh.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\cgfmxli796-rh0m0hz4su.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\ngjoh5h26w-scctfxapvb.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\hdiyqoxfne-b59oeg5zbp.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\m34nmbl4zw-t7g9wg1led.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\g6z73k2lqz-8odm1nyag1.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\b8fwtado4z-xr0c4l8jan.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\wbpgn4qrq6-8h82c988d2.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\dewbats2id-5mpc99bmbb.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\lgx7ovtypv-ys2tyb6s49.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\wjtbsfs5qp-coucdleqvw.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\7r27bpqxh6-u6djazel9b.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\tdxscva4ep-kq3enx1zfc.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\ca83mzrwnx-259makaqpv.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\yaejhh3af0-dvuf5es4er.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\q7bhmdhc05-ld7xckwkli.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\4nhtykrelc-w0gms4gy0v.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\q9axaej2w4-za30oyn8rw.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\jht6kifwp2-i62jd590hj.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\g1848vn7jn-ir474ug6zy.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\zjuquf0yc9-7g5exmj95a.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\lo5jgfcj1x-a2c1phmbzv.gz
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.development.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\Hospital.01BB3FEA.Up2Date
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\refint\HospitalSystem.dll
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.pdb
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.genruntimeconfig.cache
+D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\obj\Debug\net9.0\ref\HospitalSystem.dll

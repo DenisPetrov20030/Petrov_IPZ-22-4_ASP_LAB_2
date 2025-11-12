@@ -1,0 +1,28 @@
+using Microsoft.AspNetCore.Mvc;
+using HospitalSystem.Models;
+
+namespace HospitalSystem.Components
+{
+	public class NavigationMenuViewComponent : ViewComponent
+	{
+		private IHospitalRepository repository;
+
+		public NavigationMenuViewComponent(IHospitalRepository repo)
+		{
+			repository = repo;
+		}
+
+		public IViewComponentResult Invoke()
+		{
+			ViewBag.SelectedDepartment = RouteData?.Values["department"];
+
+			var departments = repository.Appointments
+				.Select(a => a.Department)
+				.Distinct()
+				.OrderBy(d => d)
+				.ToList();
+
+			return View(departments);
+		}
+	}
+}

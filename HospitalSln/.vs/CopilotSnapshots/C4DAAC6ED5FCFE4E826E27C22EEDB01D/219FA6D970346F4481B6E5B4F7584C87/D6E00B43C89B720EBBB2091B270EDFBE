@@ -1,0 +1,122 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using HospitalSystem.Models;
+using HospitalSystem.Models.ViewModels;
+using HospitalSystem.Infrastructure;
+
+namespace HospitalSystem.Controllers
+{
+    public class AppointmentsController : Controller
+    {
+        private IHospitalRepository repository;
+        public int PageSize = 5; // Кількість записів на сторінці
+        private const string SessionKeyDraft = "AppointmentDraft";
+
+        public AppointmentsController(IHospitalRepository repo)
+        {
+            repository = repo;
+        }
+
+        // GET: /Appointments/
+        public IActionResult Index(string? department, int page = 1)
+        {
+            var query = repository.Appointments.AsQueryable();
+
+            if (!string.IsNullOrEmpty(department))
+            {
+                query = query.Where(a => a.Department == department);
+            }
+
+            var totalItems = query.Count();
+
+            var appointments = query
+                .OrderBy(a => a.AppointmentDate)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
+            var viewModel = new AppointmentsListViewModel
+            {
+                Appointments = appointments,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = totalItems
+                },
+                CurrentDepartment = department
+            };
+
+            return View(viewModel);
+        }
+
+        // GET: /Appointments/Details/5
+        public IActionResult Details(long id)
+        {
+            var appointment = repository.Appointments.FirstOrDefault(a => a.AppointmentID == id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            return View(appointment);
+        }
+
+        // GET: /Appointments/Create
+        public IActionResult Create()
+        {
+            // Спроба відновити чернетку із сесії
+            var draft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft);
+            
+            if (draft != null)
+            {
+                ViewBag.HasDraft = true;
+                return View(draft);
+            }
+
+            return View(new Appointment());
+        }
+
+        // POST: /Appointments/Create
+        [HttpPost]
+        public IActionResult Create(Appointment appointment, string action)
+        {
+            // Якщо користувач натиснув "Зберегти чернетку"
+            if (action == "SaveDraft")
+            {
+                HttpContext.Session.SetJson(SessionKeyDraft, appointment);
+                TempData["Message"] = "Чернетку збережено! Ви можете продовжити пізніше.";
+                return RedirectToAction("Index");
+            }
+
+            // Якщо користувач натиснув "Очистити чернетку"
+            if (action == "ClearDraft")
+            {
+                HttpContext.Session.Remove(SessionKeyDraft);
+                TempData["Message"] = "Чернетку видалено.";
+                return RedirectToAction("Create");
+            }
+
+            // Створення запису
+            if (ModelState.IsValid)
+            {
+                repository.SaveAppointment(appointment);
+                
+                // Видаляємо чернетку після успішного створення
+                HttpContext.Session.Remove(SessionKeyDraft);
+                
+                TempData["Success"] = "Запис успішно створено!";
+                return RedirectToAction("Index");
+            }
+            
+            ViewBag.HasDraft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft) != null;
+            return View(appointment);
+        }
+
+        // GET: /Appointments/ClearDraft
+        public IActionResult ClearDraft()
+        {
+            HttpContext.Session.Remove(SessionKeyDraft);
+            TempData["Message"] = "Чернетку видалено.";
+            return RedirectToAction("Create");
+        }
+    }
+}

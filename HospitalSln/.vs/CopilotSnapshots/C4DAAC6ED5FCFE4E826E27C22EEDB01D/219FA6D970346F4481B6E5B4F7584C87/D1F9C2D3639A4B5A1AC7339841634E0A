@@ -1,0 +1,79 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using HospitalSystem.Models;
+using HospitalSystem.Models.ViewModels;
+
+namespace HospitalSystem.Controllers
+{
+    public class AppointmentsController : Controller
+    {
+        private IHospitalRepository repository;
+        public int PageSize = 5; // Кількість записів на сторінці
+
+        public AppointmentsController(IHospitalRepository repo)
+        {
+            repository = repo;
+        }
+
+        // GET: /Appointments/
+        public IActionResult Index(string? department, int page = 1)
+        {
+            var query = repository.Appointments.AsQueryable();
+
+            if (!string.IsNullOrEmpty(department))
+            {
+                query = query.Where(a => a.Department == department);
+            }
+
+            var totalItems = query.Count();
+
+            var appointments = query
+                .OrderBy(a => a.AppointmentDate)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
+            var viewModel = new AppointmentsListViewModel
+            {
+                Appointments = appointments,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = totalItems
+                },
+                CurrentDepartment = department
+            };
+
+            return View(viewModel);
+        }
+
+        // GET: /Appointments/Details/5
+        public IActionResult Details(long id)
+        {
+            var appointment = repository.Appointments.FirstOrDefault(a => a.AppointmentID == id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            return View(appointment);
+        }
+
+        // GET: /Appointments/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: /Appointments/Create
+        [HttpPost]
+        public IActionResult Create(Appointment appointment)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveAppointment(appointment);
+                return RedirectToAction("Index");
+            }
+            return View(appointment);
+        }
+    }
+}

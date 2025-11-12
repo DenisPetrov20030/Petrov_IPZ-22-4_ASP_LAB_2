@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using HospitalSystem.Models;
 using HospitalSystem.Models.ViewModels;
+using HospitalSystem.Infrastructure;
 
 namespace HospitalSystem.Controllers
 {
@@ -8,6 +9,7 @@ namespace HospitalSystem.Controllers
     {
         private IHospitalRepository repository;
         public int PageSize = 5; // Кількість записів на сторінці
+        private const string SessionKeyDraft = "AppointmentDraft";
 
         public AppointmentsController(IHospitalRepository repo)
         {
@@ -15,9 +17,18 @@ namespace HospitalSystem.Controllers
         }
 
         // GET: /Appointments/
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string? department, int page = 1)
         {
-            var appointments = repository.Appointments
+            var query = repository.Appointments.AsQueryable();
+
+            if (!string.IsNullOrEmpty(department))
+            {
+                query = query.Where(a => a.Department == department);
+            }
+
+            var totalItems = query.Count();
+
+            var appointments = query
                 .OrderBy(a => a.AppointmentDate)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize)
@@ -30,8 +41,9 @@ namespace HospitalSystem.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Appointments.Count()
-                }
+                    TotalItems = totalItems
+                },
+                CurrentDepartment = department
             };
 
             return View(viewModel);
@@ -51,19 +63,55 @@ namespace HospitalSystem.Controllers
         // GET: /Appointments/Create
         public IActionResult Create()
         {
-            return View();
+            var draft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft);
+            
+            if (draft != null)
+            {
+                ViewBag.HasDraft = true;
+                return View(draft);
+            }
+
+            return View(new Appointment());
         }
 
         // POST: /Appointments/Create
         [HttpPost]
-        public IActionResult Create(Appointment appointment)
+        public IActionResult Create(Appointment appointment, string action)
         {
+            if (action == "SaveDraft")
+            {
+                HttpContext.Session.SetJson(SessionKeyDraft, appointment);
+                TempData["Message"] = "Чернетку збережено! Ви можете продовжити пізніше.";
+                return RedirectToAction("Index");
+            }
+
+            if (action == "ClearDraft")
+            {
+                HttpContext.Session.Remove(SessionKeyDraft);
+                TempData["Message"] = "Чернетку видалено.";
+                return RedirectToAction("Create");
+            }
+
             if (ModelState.IsValid)
             {
                 repository.SaveAppointment(appointment);
+                
+                HttpContext.Session.Remove(SessionKeyDraft);
+                
+                TempData["Success"] = "Запис успішно створено!";
                 return RedirectToAction("Index");
             }
+            
+            ViewBag.HasDraft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft) != null;
             return View(appointment);
+        }
+
+        // GET: /Appointments/ClearDraft
+        public IActionResult ClearDraft()
+        {
+            HttpContext.Session.Remove(SessionKeyDraft);
+            TempData["Message"] = "Чернетку видалено.";
+            return RedirectToAction("Create");
         }
     }
 }

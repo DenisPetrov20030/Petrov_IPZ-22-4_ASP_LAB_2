@@ -17,41 +17,49 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HospitalSystem
 build_property.RootNamespace = HospitalSystem
-build_property.ProjectDir = D:\Уроки\ASP\Лаба 2\HospitalSln\HospitalSystem\
+build_property.ProjectDir = D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Уроки\ASP\Лаба 2\HospitalSln\HospitalSystem
+build_property.MSBuildProjectDirectory = D:\Уроки\ASP\Лаба 2-5\HospitalSln\HospitalSystem
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/Уроки/ASP/Лаба 2/HospitalSln/HospitalSystem/Views/Appointments/Create.cshtml]
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/Appointments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Уроки/ASP/Лаба 2/HospitalSln/HospitalSystem/Views/Appointments/Details.cshtml]
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/Appointments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Уроки/ASP/Лаба 2/HospitalSln/HospitalSystem/Views/Appointments/Index.cshtml]
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/Appointments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Уроки/ASP/Лаба 2/HospitalSln/HospitalSystem/Views/Home/Index.cshtml]
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Уроки/ASP/Лаба 2/HospitalSln/HospitalSystem/Views/Shared/_Layout.cshtml]
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/Shared/Components/NavigationMenu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmF2aWdhdGlvbk1lbnVcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/Shared/_AppointmentRow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BcHBvaW50bWVudFJvdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Уроки/ASP/Лаба 2/HospitalSln/HospitalSystem/Views/_ViewImports.cshtml]
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Уроки/ASP/Лаба 2/HospitalSln/HospitalSystem/Views/_ViewStart.cshtml]
+[D:/Уроки/ASP/Лаба 2-5/HospitalSln/HospitalSystem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

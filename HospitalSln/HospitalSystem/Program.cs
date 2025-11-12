@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using HospitalSystem.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,15 +6,35 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<HospitalDbContext>(opts => {
-	opts.UseSqlite(builder.Configuration["ConnectionStrings:HospitalConnection"]);
+    opts.UseSqlite(builder.Configuration["ConnectionStrings:HospitalConnection"]);
 });
 
 builder.Services.AddScoped<IHospitalRepository, EFHospitalRepository>();
+
+// === РЕЄСТРАЦІЯ СЕРВІСІВ СЕСІЇ (Це вже було правильно) ===
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.Cookie.Name = ".HospitalSystem.Session";
+});
 
 var app = builder.Build();
 
 app.UseStaticFiles();
 
+// === КРИТИЧНИЙ БЛОК: UseRouting має йти перед UseSession ===
+app.UseRouting(); // Додаємо явно
+
+// 🌟 ВИКОРИСТАННЯ СЕСІЙ (Місце змінено!)
+app.UseSession();
+
+// Тут зазвичай йде UseAuthentication/UseAuthorization, якщо вони потрібні
+// app.UseAuthorization(); 
+
+// === КІНЦЕВІ ТОЧКИ (Роутинг) ===
 app.MapDefaultControllerRoute();
 
 app.Run();

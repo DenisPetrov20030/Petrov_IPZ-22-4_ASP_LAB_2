@@ -1,0 +1,4 @@
+﻿@using HospitalSystem
+@using HospitalSystem.Models
+@using HospitalSystem.Models.ViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

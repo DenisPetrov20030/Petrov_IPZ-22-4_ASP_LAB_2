@@ -1,0 +1,21 @@
+@model IEnumerable<string>
+
+<div class="list-group">
+	<a class="list-group-item list-group-item-action @(ViewBag.SelectedDepartment == null ? "active" : "")"
+	   asp-controller="Appointments"
+	   asp-action="Index"
+	   asp-route-department="">
+		<i class="bi bi-house-door me-2"></i>Всі відділення
+	</a>
+
+	@foreach (var department in Model)
+	{
+		<a class="list-group-item list-group-item-action @(ViewBag.SelectedDepartment == department ? "active" : "")"
+		   asp-controller="Appointments"
+		   asp-action="Index"
+		   asp-route-department="@department"
+		   asp-route-page="1">
+			<i class="bi bi-folder me-2"></i>@department
+		</a>
+	}
+</div>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YVL9FHWz3M4=",
+  "dgSpecHash": "X74UsJDoOhc=",
   "success": true,
-  "projectFilePath": "D:\\Уроки\\ASP\\Лаба 2\\HospitalSln\\HospitalSystem\\HospitalSystem.csproj",
+  "projectFilePath": "D:\\Уроки\\ASP\\Лаба 2-5\\HospitalSln\\HospitalSystem\\HospitalSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
