@@ -1,0 +1,24 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace HospitalSystem.Models
+{
+	public class HospitalDbContext : DbContext
+	{
+		public HospitalDbContext(DbContextOptions<HospitalDbContext> options) : base(options) { }
+		
+		public DbSet<Appointment> Appointments => Set<Appointment>();
+		public DbSet<Doctor> Doctors => Set<Doctor>();
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			// Налаштування зв'язку один-до-багатьох між Doctor та Appointment
+			modelBuilder.Entity<Doctor>()
+				.HasMany(d => d.Appointments)
+				.WithOne(a => a.Doctor)
+				.HasForeignKey(a => a.DoctorID)
+				.OnDelete(DeleteBehavior.SetNull); // Якщо лікар видалений, DoctorID стане null
+		}
+	}
+}

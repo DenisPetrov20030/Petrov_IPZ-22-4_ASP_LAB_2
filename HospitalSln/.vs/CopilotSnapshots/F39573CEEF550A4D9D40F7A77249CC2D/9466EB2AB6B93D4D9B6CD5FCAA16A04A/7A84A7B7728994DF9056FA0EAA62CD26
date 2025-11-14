@@ -1,0 +1,29 @@
+﻿@model HospitalSystem.Models.Appointment
+
+<tr>
+	<td>@Model.PatientName</td>
+	<td>
+		@Model.DoctorName
+		@if (Model.Doctor != null)
+		{
+			<br/><small class="text-muted">
+				<i class="bi bi-link-45deg"></i> @Model.Doctor.FullName
+			</small>
+		}
+	</td>
+	<td>@Model.AppointmentDate.ToString("dd.MM.yyyy HH:mm")</td>
+	<td>@Model.Department</td>
+	<td>
+		<div class="btn-group" role="group">
+			<a href="/Appointments/Details/@Model.AppointmentID" class="btn btn-sm btn-info">
+				<i class="bi bi-eye"></i>
+			</a>
+			<a href="/Appointments/Edit/@Model.AppointmentID" class="btn btn-sm btn-warning">
+				<i class="bi bi-pencil"></i>
+			</a>
+			<a href="/Appointments/Delete/@Model.AppointmentID" class="btn btn-sm btn-danger">
+				<i class="bi bi-trash"></i>
+			</a>
+		</div>
+	</td>
+</tr>

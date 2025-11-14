@@ -1,0 +1,13 @@
+﻿@model HospitalSystem.Models.Appointment
+
+<tr>
+	<td>@Model.PatientName</td>
+	<td>@Model.DoctorName</td>
+	<td>@Model.AppointmentDate.ToString("dd.MM.yyyy HH:mm")</td>
+	<td>@Model.Department</td>
+	<td>
+		<a href="/Appointments/Details/@Model.AppointmentID" class="btn btn-sm btn-outline-info">
+			<i class="bi bi-eye"></i> Деталі
+		</a>
+	</td>
+</tr>

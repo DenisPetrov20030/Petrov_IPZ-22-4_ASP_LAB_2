@@ -3,7 +3,15 @@ namespace HospitalSystem.Models
 	public interface IHospitalRepository
 	{
 		IQueryable<Appointment> Appointments { get; }
-		void SaveAppointment(Appointment appointment);
+		void CreateAppointment(Appointment appointment);
+		void UpdateAppointment(Appointment appointment);
 		void DeleteAppointment(Appointment appointment);
+		Appointment? GetAppointmentById(long id);
+
+		IQueryable<Doctor> Doctors { get; }
+		void CreateDoctor(Doctor doctor);
+		void UpdateDoctor(Doctor doctor);
+		void DeleteDoctor(Doctor doctor);
+		Doctor? GetDoctorById(long id);
 	}
 }

@@ -1,0 +1,31 @@
+﻿namespace HospitalSystem.Models
+{
+	public class EFHospitalRepository : IHospitalRepository
+	{
+		private HospitalDbContext context;
+		public EFHospitalRepository(HospitalDbContext ctx)
+		{
+			context = ctx;
+		}
+		public IQueryable<Appointment> Appointments => context.Appointments;
+
+		public void SaveAppointment(Appointment appointment)
+		{
+			if (appointment.AppointmentID == 0 || appointment.AppointmentID == null)
+			{
+				context.Appointments.Add(appointment);
+			}
+			else
+			{
+				context.Appointments.Update(appointment);
+			}
+			context.SaveChanges();
+		}
+
+		public void DeleteAppointment(Appointment appointment)
+		{
+			context.Appointments.Remove(appointment);
+			context.SaveChanges();
+		}
+	}
+}

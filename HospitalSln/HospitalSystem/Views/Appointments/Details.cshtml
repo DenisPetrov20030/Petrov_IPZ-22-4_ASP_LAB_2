@@ -7,11 +7,42 @@
 		</div>
 		<div class="card-body">
 			<dl class="row">
+				<dt class="col-sm-4">ID:</dt>
+				<dd class="col-sm-8">@Model.AppointmentID</dd>
+
 				<dt class="col-sm-4">Пацієнт:</dt>
-				<dd class="col-sm-8">@Model.PatientName</dd>
+				<dd class="col-sm-8"><strong>@Model.PatientName</strong></dd>
 
 				<dt class="col-sm-4">Лікар:</dt>
 				<dd class="col-sm-8">@Model.DoctorName</dd>
+
+				@if (Model.Doctor != null)
+				{
+					<dt class="col-sm-4">Лікар (зв'язок):</dt>
+					<dd class="col-sm-8">
+						<div class="card border-primary">
+							<div class="card-body p-2">
+								<h6 class="mb-1">@Model.Doctor.FullName</h6>
+								<small class="text-muted">
+									<i class="bi bi-hospital"></i> @Model.Doctor.Specialization<br/>
+									<i class="bi bi-building"></i> @Model.Doctor.Department<br/>
+									<i class="bi bi-telephone"></i> @Model.Doctor.PhoneNumber<br/>
+									<i class="bi bi-envelope"></i> @Model.Doctor.Email
+								</small><br/>
+								<a href="/Doctors/Details/@Model.Doctor.DoctorID" class="btn btn-sm btn-outline-primary mt-2">
+									<i class="bi bi-eye"></i> Деталі лікаря
+								</a>
+							</div>
+						</div>
+					</dd>
+				}
+				else
+				{
+					<dt class="col-sm-4">Лікар (зв'язок):</dt>
+					<dd class="col-sm-8">
+						<span class="badge bg-secondary">Не вказано</span>
+					</dd>
+				}
 
 				<dt class="col-sm-4">Дата і час:</dt>
 				<dd class="col-sm-8">@Model.AppointmentDate.ToString("dd MMM yyyy, HH:mm")</dd>
@@ -31,11 +62,20 @@
 					}
 				</dd>
 			</dl>
-		</div>
-		<div class="card-footer text-end">
-			<a href="/Appointments" class="btn btn-outline-primary">
-				<i class="bi bi-arrow-left"></i> Назад
-			</a>
+
+			<div class="mt-4 d-flex justify-content-between">
+				<div>
+					<a href="/Appointments/Edit/@Model.AppointmentID" class="btn btn-warning">
+						<i class="bi bi-pencil"></i> Редагувати
+					</a>
+					<a href="/Appointments/Delete/@Model.AppointmentID" class="btn btn-danger">
+						<i class="bi bi-trash"></i> Видалити
+					</a>
+				</div>
+				<a href="/Appointments" class="btn btn-outline-secondary">
+					<i class="bi bi-arrow-left"></i> Назад до списку
+				</a>
+			</div>
 		</div>
 	</div>
 </div>

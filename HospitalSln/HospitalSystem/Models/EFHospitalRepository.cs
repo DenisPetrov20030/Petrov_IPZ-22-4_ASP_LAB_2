@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace HospitalSystem.Models
 {
 	public class EFHospitalRepository : IHospitalRepository
@@ -7,18 +9,18 @@ namespace HospitalSystem.Models
 		{
 			context = ctx;
 		}
-		public IQueryable<Appointment> Appointments => context.Appointments;
 
-		public void SaveAppointment(Appointment appointment)
+		public IQueryable<Appointment> Appointments => context.Appointments.Include(a => a.Doctor);
+
+		public void CreateAppointment(Appointment appointment)
 		{
-			if (appointment.AppointmentID == 0 || appointment.AppointmentID == null)
-			{
-				context.Appointments.Add(appointment);
-			}
-			else
-			{
-				context.Appointments.Update(appointment);
-			}
+			context.Appointments.Add(appointment);
+			context.SaveChanges();
+		}
+
+		public void UpdateAppointment(Appointment appointment)
+		{
+			context.Appointments.Update(appointment);
 			context.SaveChanges();
 		}
 
@@ -26,6 +28,36 @@ namespace HospitalSystem.Models
 		{
 			context.Appointments.Remove(appointment);
 			context.SaveChanges();
+		}
+
+		public Appointment? GetAppointmentById(long id)
+		{
+			return context.Appointments.Include(a => a.Doctor).FirstOrDefault(a => a.AppointmentID == id);
+		}
+
+		public IQueryable<Doctor> Doctors => context.Doctors.Include(d => d.Appointments);
+
+		public void CreateDoctor(Doctor doctor)
+		{
+			context.Doctors.Add(doctor);
+			context.SaveChanges();
+		}
+
+		public void UpdateDoctor(Doctor doctor)
+		{
+			context.Doctors.Update(doctor);
+			context.SaveChanges();
+		}
+
+		public void DeleteDoctor(Doctor doctor)
+		{
+			context.Doctors.Remove(doctor);
+			context.SaveChanges();
+		}
+
+		public Doctor? GetDoctorById(long id)
+		{
+			return context.Doctors.Include(d => d.Appointments).FirstOrDefault(d => d.DoctorID == id);
 		}
 	}
 }

@@ -1,0 +1,16 @@
+﻿namespace HospitalSystem.Models
+{
+	public class Appointment
+	{
+		public long? AppointmentID { get; set; }
+		public string PatientName { get; set; } = String.Empty;
+		public string DoctorName { get; set; } = String.Empty;
+		public DateTime AppointmentDate { get; set; }
+		public string Department { get; set; } = String.Empty;
+		public string Notes { get; set; } = String.Empty;
+
+		public long? DoctorID { get; set; }
+
+		public Doctor? Doctor { get; set; }
+	}
+}

@@ -2,13 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 using HospitalSystem.Models;
 using HospitalSystem.Models.ViewModels;
 using HospitalSystem.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HospitalSystem.Controllers
 {
     public class AppointmentsController : Controller
     {
         private IHospitalRepository repository;
-        public int PageSize = 5; // Кількість записів на сторінці
+        public int PageSize = 5;
         private const string SessionKeyDraft = "AppointmentDraft";
 
         public AppointmentsController(IHospitalRepository repo)
@@ -52,7 +53,7 @@ namespace HospitalSystem.Controllers
         // GET: /Appointments/Details/5
         public IActionResult Details(long id)
         {
-            var appointment = repository.Appointments.FirstOrDefault(a => a.AppointmentID == id);
+            var appointment = repository.GetAppointmentById(id);
             if (appointment == null)
             {
                 return NotFound();
@@ -64,6 +65,8 @@ namespace HospitalSystem.Controllers
         public IActionResult Create()
         {
             var draft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft);
+            
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName");
             
             if (draft != null)
             {
@@ -88,29 +91,82 @@ namespace HospitalSystem.Controllers
             if (action == "ClearDraft")
             {
                 HttpContext.Session.Remove(SessionKeyDraft);
-                TempData["Message"] = "Чернетку видалено.";
+                TempData["Message"] = "Чернетку очищено.";
                 return RedirectToAction("Create");
             }
 
             if (ModelState.IsValid)
             {
-                repository.SaveAppointment(appointment);
+                repository.CreateAppointment(appointment);
                 
                 HttpContext.Session.Remove(SessionKeyDraft);
                 
-                TempData["Success"] = "Запис успішно створено!";
+                TempData["Success"] = "Новий запис створено!";
                 return RedirectToAction("Index");
             }
             
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName");
             ViewBag.HasDraft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft) != null;
             return View(appointment);
+        }
+
+        // GET: /Appointments/Edit/5
+        public IActionResult Edit(long id)
+        {
+            var appointment = repository.GetAppointmentById(id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName", appointment.DoctorID);
+            return View(appointment);
+        }
+
+        // POST: /Appointments/Edit/5
+        [HttpPost]
+        public IActionResult Edit(Appointment appointment)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.UpdateAppointment(appointment);
+                TempData["Success"] = "Запис оновлено!";
+                return RedirectToAction("Index");
+            }
+            
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName", appointment.DoctorID);
+            return View(appointment);
+        }
+
+        // GET: /Appointments/Delete/5
+        public IActionResult Delete(long id)
+        {
+            var appointment = repository.GetAppointmentById(id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            return View(appointment);
+        }
+
+        // POST: /Appointments/Delete/5
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(long id)
+        {
+            var appointment = repository.GetAppointmentById(id);
+            if (appointment != null)
+            {
+                repository.DeleteAppointment(appointment);
+                TempData["Success"] = "Запис видалено!";
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: /Appointments/ClearDraft
         public IActionResult ClearDraft()
         {
             HttpContext.Session.Remove(SessionKeyDraft);
-            TempData["Message"] = "Чернетку видалено.";
+            TempData["Message"] = "Чернетку очищено.";
             return RedirectToAction("Create");
         }
     }

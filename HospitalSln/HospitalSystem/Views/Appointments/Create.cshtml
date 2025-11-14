@@ -24,31 +24,44 @@
 		</div>
 		<div class="card-body">
 			<form method="post" action="/Appointments/Create">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
 				<div class="mb-3">
-					<label class="form-label">Ім'я пацієнта</label>
-					<input type="text" name="PatientName" class="form-control" value="@Model.PatientName" required>
+					<label asp-for="PatientName" class="form-label"></label>
+					<input asp-for="PatientName" class="form-control" />
+					<span asp-validation-for="PatientName" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label">Ім'я лікаря</label>
-					<input type="text" name="DoctorName" class="form-control" value="@Model.DoctorName" required>
+					<label asp-for="DoctorName" class="form-label"></label>
+					<input asp-for="DoctorName" class="form-control" />
+					<span asp-validation-for="DoctorName" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label">Дата і час</label>
-					<input type="datetime-local" name="AppointmentDate" class="form-control" 
-						   value="@(Model.AppointmentDate != default(DateTime) ? Model.AppointmentDate.ToString("yyyy-MM-ddTHH:mm") : "")" 
-						   required>
+					<label asp-for="DoctorID" class="form-label">Лікар (зв'язок)</label>
+					<select asp-for="DoctorID" asp-items="ViewBag.Doctors" class="form-select">
+						<option value="">-- Не вибрано --</option>
+					</select>
+					<small class="form-text text-muted">Оберіть лікаря зі списку для встановлення зв'язку</small>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label">Відділення</label>
-					<input type="text" name="Department" class="form-control" value="@Model.Department" required>
+					<label asp-for="AppointmentDate" class="form-label"></label>
+					<input asp-for="AppointmentDate" type="datetime-local" class="form-control" />
+					<span asp-validation-for="AppointmentDate" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label">Примітки</label>
-					<textarea name="Notes" class="form-control" rows="3">@Model.Notes</textarea>
+					<label asp-for="Department" class="form-label"></label>
+					<input asp-for="Department" class="form-control" />
+					<span asp-validation-for="Department" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label asp-for="Notes" class="form-label"></label>
+					<textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+					<span asp-validation-for="Notes" class="text-danger"></span>
 				</div>
 
 				<div class="d-flex justify-content-between flex-wrap gap-2">
@@ -82,3 +95,7 @@
 		Дані зберігаються протягом 30 хвилин.
 	</div>
 </div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,91 @@
+@model HospitalSystem.Models.Doctor
+
+<div class="container py-4">
+	<div class="card shadow-sm">
+		<div class="card-header bg-info text-white">
+			<h4><i class="bi bi-person-badge"></i> Деталі лікаря</h4>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6">
+					<dl class="row">
+						<dt class="col-sm-4">ID:</dt>
+						<dd class="col-sm-8">@Model.DoctorID</dd>
+
+						<dt class="col-sm-4">Повне ім'я:</dt>
+						<dd class="col-sm-8"><strong>@Model.FullName</strong></dd>
+
+						<dt class="col-sm-4">Спеціалізація:</dt>
+						<dd class="col-sm-8">@Model.Specialization</dd>
+
+						<dt class="col-sm-4">Відділення:</dt>
+						<dd class="col-sm-8">@Model.Department</dd>
+
+						<dt class="col-sm-4">Телефон:</dt>
+						<dd class="col-sm-8">@Model.PhoneNumber</dd>
+
+						<dt class="col-sm-4">Email:</dt>
+						<dd class="col-sm-8"><a href="mailto:@Model.Email">@Model.Email</a></dd>
+					</dl>
+				</div>
+			</div>
+
+			<hr />
+
+			<h5><i class="bi bi-calendar-check"></i> Записи на прийом (@Model.Appointments.Count)</h5>
+			
+			@if (Model.Appointments.Any())
+			{
+				<div class="table-responsive">
+					<table class="table table-sm table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Пацієнт</th>
+								<th>Дата і час</th>
+								<th>Відділення</th>
+								<th>Дії</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var appointment in Model.Appointments.OrderBy(a => a.AppointmentDate))
+							{
+								<tr>
+									<td>@appointment.AppointmentID</td>
+									<td>@appointment.PatientName</td>
+									<td>@appointment.AppointmentDate.ToString("dd.MM.yyyy HH:mm")</td>
+									<td>@appointment.Department</td>
+									<td>
+										<a href="/Appointments/Details/@appointment.AppointmentID" class="btn btn-sm btn-info">
+											<i class="bi bi-eye"></i>
+										</a>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			}
+			else
+			{
+				<div class="alert alert-info">
+					<i class="bi bi-info-circle"></i> У цього лікаря поки немає записів на прийом.
+				</div>
+			}
+
+			<div class="mt-4 d-flex justify-content-between">
+				<div>
+					<a href="/Doctors/Edit/@Model.DoctorID" class="btn btn-warning">
+						<i class="bi bi-pencil"></i> Редагувати
+					</a>
+					<a href="/Doctors/Delete/@Model.DoctorID" class="btn btn-danger">
+						<i class="bi bi-trash"></i> Видалити
+					</a>
+				</div>
+				<a href="/Doctors" class="btn btn-outline-secondary">
+					<i class="bi bi-arrow-left"></i> Назад до списку
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

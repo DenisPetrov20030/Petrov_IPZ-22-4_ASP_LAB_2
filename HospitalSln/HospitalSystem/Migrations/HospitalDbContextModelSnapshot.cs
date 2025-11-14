@@ -30,6 +30,9 @@ namespace HospitalSystem.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<long?>("DoctorID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("DoctorName")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -44,7 +47,55 @@ namespace HospitalSystem.Migrations
 
                     b.HasKey("AppointmentID");
 
+                    b.HasIndex("DoctorID");
+
                     b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("HospitalSystem.Models.Doctor", b =>
+                {
+                    b.Property<long>("DoctorID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Department")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Specialization")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DoctorID");
+
+                    b.ToTable("Doctors");
+                });
+
+            modelBuilder.Entity("HospitalSystem.Models.Appointment", b =>
+                {
+                    b.HasOne("HospitalSystem.Models.Doctor", "Doctor")
+                        .WithMany("Appointments")
+                        .HasForeignKey("DoctorID")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Doctor");
+                });
+
+            modelBuilder.Entity("HospitalSystem.Models.Doctor", b =>
+                {
+                    b.Navigation("Appointments");
                 });
 #pragma warning restore 612, 618
         }
