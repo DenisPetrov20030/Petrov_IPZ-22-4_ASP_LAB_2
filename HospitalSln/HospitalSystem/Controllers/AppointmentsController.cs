@@ -5,6 +5,8 @@ using HospitalSystem.Models.ViewModels;
 using HospitalSystem.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using HospitalSystem.Hubs;
 
 namespace HospitalSystem.Controllers
 {
@@ -12,12 +14,14 @@ namespace HospitalSystem.Controllers
     public class AppointmentsController : Controller
     {
         private IHospitalRepository repository;
+        private readonly IHubContext<AppointmentHub> _hubContext;
         public int PageSize = 5;
         private const string SessionKeyDraft = "AppointmentDraft";
 
-        public AppointmentsController(IHospitalRepository repo)
+        public AppointmentsController(IHospitalRepository repo, IHubContext<AppointmentHub> hubContext)
         {
             repository = repo;
+            _hubContext = hubContext;
         }
 
         // GET: /Appointments/
@@ -82,7 +86,7 @@ namespace HospitalSystem.Controllers
 
         // POST: /Appointments/Create
         [HttpPost]
-        public IActionResult Create(Appointment appointment, string action)
+        public async Task<IActionResult> Create(Appointment appointment, string action)
         {
             if (action == "SaveDraft")
             {
@@ -103,6 +107,17 @@ namespace HospitalSystem.Controllers
                 repository.CreateAppointment(appointment);
                 
                 HttpContext.Session.Remove(SessionKeyDraft);
+                
+                // Notify all clients about new appointment
+                await _hubContext.Clients.All.SendAsync("AppointmentCreated", new
+                {
+                    appointmentId = appointment.AppointmentID,
+                    patientName = appointment.PatientName,
+                    doctorName = appointment.DoctorName,
+                    appointmentDate = appointment.AppointmentDate,
+                    department = appointment.Department,
+                    message = $"Новий запис створено: {appointment.PatientName} до {appointment.DoctorName} на {appointment.AppointmentDate:dd.MM.yyyy HH:mm}"
+                });
                 
                 TempData["Success"] = "Запис успішно створено!";
                 return RedirectToAction("Index");
@@ -128,11 +143,23 @@ namespace HospitalSystem.Controllers
 
         // POST: /Appointments/Edit/5
         [HttpPost]
-        public IActionResult Edit(Appointment appointment)
+        public async Task<IActionResult> Edit(Appointment appointment)
         {
             if (ModelState.IsValid)
             {
                 repository.UpdateAppointment(appointment);
+                
+                // Notify all clients about updated appointment
+                await _hubContext.Clients.All.SendAsync("AppointmentUpdated", new
+                {
+                    appointmentId = appointment.AppointmentID,
+                    patientName = appointment.PatientName,
+                    doctorName = appointment.DoctorName,
+                    appointmentDate = appointment.AppointmentDate,
+                    department = appointment.Department,
+                    message = $"Запис оновлено: {appointment.PatientName} до {appointment.DoctorName} на {appointment.AppointmentDate:dd.MM.yyyy HH:mm}"
+                });
+                
                 TempData["Success"] = "Запис оновлено!";
                 return RedirectToAction("Index");
             }
@@ -154,12 +181,25 @@ namespace HospitalSystem.Controllers
 
         // POST: /Appointments/Delete/5
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(long id)
+        public async Task<IActionResult> DeleteConfirmed(long id)
         {
             var appointment = repository.GetAppointmentById(id);
             if (appointment != null)
             {
+                var doctorName = appointment.DoctorName;
+                var appointmentDate = appointment.AppointmentDate;
+                
                 repository.DeleteAppointment(appointment);
+                
+                // Notify all clients about deleted appointment
+                await _hubContext.Clients.All.SendAsync("AppointmentDeleted", new
+                {
+                    appointmentId = id,
+                    doctorName = doctorName,
+                    appointmentDate = appointmentDate,
+                    message = $"Запис скасовано: {doctorName} на {appointmentDate:dd.MM.yyyy HH:mm} тепер вільний"
+                });
+                
                 TempData["Success"] = "Запис видалено!";
             }
             return RedirectToAction("Index");
@@ -171,6 +211,12 @@ namespace HospitalSystem.Controllers
             HttpContext.Session.Remove(SessionKeyDraft);
             TempData["Message"] = "Чернетку очищено.";
             return RedirectToAction("Create");
+        }
+
+        // GET: /Appointments/Dashboard
+        public IActionResult Dashboard()
+        {
+            return View();
         }
     }
 }

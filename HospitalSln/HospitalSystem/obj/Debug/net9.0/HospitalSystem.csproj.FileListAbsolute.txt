@@ -1136,3 +1136,4 @@ D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSys
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.genruntimeconfig.cache
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\ref\HospitalSystem.dll
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\compressed\1du7f7uy9v-umhdq8nxtw.gz

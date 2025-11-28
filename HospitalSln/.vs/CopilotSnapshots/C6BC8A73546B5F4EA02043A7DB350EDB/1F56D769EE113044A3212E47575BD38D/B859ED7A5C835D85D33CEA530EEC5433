@@ -1,0 +1,126 @@
+﻿// SignalR connection for real-time appointment updates
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/appointmentHub")
+    .withAutomaticReconnect()
+    .build();
+
+// Start the connection
+async function startConnection() {
+    try {
+        await connection.start();
+        console.log("SignalR Connected");
+    } catch (err) {
+        console.error("SignalR Connection Error: ", err);
+        setTimeout(startConnection, 5000);
+    }
+}
+
+// Reconnection handlers
+connection.onreconnecting((error) => {
+    console.warn("SignalR Reconnecting...", error);
+});
+
+connection.onreconnected((connectionId) => {
+    console.log("SignalR Reconnected: ", connectionId);
+});
+
+connection.onclose((error) => {
+    console.error("SignalR Connection Closed", error);
+    setTimeout(startConnection, 5000);
+});
+
+// Listen for appointment created events
+connection.on("AppointmentCreated", (data) => {
+    console.log("Appointment Created:", data);
+    showNotification("success", data.message);
+    
+    // Reload the page to show new appointment
+    if (window.location.pathname.toLowerCase().includes('/appointments')) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    }
+});
+
+// Listen for appointment updated events
+connection.on("AppointmentUpdated", (data) => {
+    console.log("Appointment Updated:", data);
+    showNotification("info", data.message);
+    
+    // Reload the page to show updated appointment
+    if (window.location.pathname.toLowerCase().includes('/appointments')) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    }
+});
+
+// Listen for appointment deleted events
+connection.on("AppointmentDeleted", (data) => {
+    console.log("Appointment Deleted:", data);
+    showNotification("warning", data.message);
+    
+    // Remove the appointment row from table if exists
+    const row = document.querySelector(`tr[data-appointment-id="${data.appointmentId}"]`);
+    if (row) {
+        row.classList.add('table-danger');
+        setTimeout(() => {
+            row.remove();
+        }, 1500);
+    }
+    
+    // Reload the page after a delay
+    if (window.location.pathname.toLowerCase().includes('/appointments')) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    }
+});
+
+// Show notification using Bootstrap toast or alert
+function showNotification(type, message) {
+    // Create toast container if it doesn't exist
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
+        toastContainer.style.zIndex = '9999';
+        document.body.appendChild(toastContainer);
+    }
+    
+    // Create toast element
+    const toastId = 'toast-' + Date.now();
+    const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                     type === 'warning' ? 'bi-exclamation-triangle-fill' : 
+                     'bi-info-circle-fill';
+    const bgClass = type === 'success' ? 'bg-success' : 
+                   type === 'warning' ? 'bg-warning' : 
+                   'bg-info';
+    
+    const toastHTML = `
+        <div id="${toastId}" class="toast align-items-center text-white ${bgClass} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi ${iconClass} me-2"></i>
+                    ${message}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    `;
+    
+    toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+    
+    const toastElement = document.getElementById(toastId);
+    const toast = new bootstrap.Toast(toastElement, { delay: 5000 });
+    toast.show();
+    
+    // Remove toast after it's hidden
+    toastElement.addEventListener('hidden.bs.toast', () => {
+        toastElement.remove();
+    });
+}
+
+// Start the connection when the page loads
+startConnection();

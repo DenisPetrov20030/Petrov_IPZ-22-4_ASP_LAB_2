@@ -1,0 +1,208 @@
+﻿@{
+    ViewData["Title"] = "Real-Time Dashboard";
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-broadcast"></i> Моніторинг доступних годин візиту
+                        <span class="badge bg-success ms-2" id="connection-status">
+                            <i class="bi bi-wifi"></i> Підключено
+                        </span>
+                    </h4>
+                    <small class="d-block mt-2 opacity-75">
+                        <i class="bi bi-info-circle"></i> Оновлення у реальному часі про заброньовані та скасовані записи
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-clock-history"></i> Останні події</h5>
+                </div>
+                <div class="card-body">
+                    <div id="events-list" style="max-height: 400px; overflow-y: auto;">
+                        <p class="text-muted text-center py-4">
+                            <i class="bi bi-hourglass-split"></i> Очікування подій...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="bi bi-graph-up"></i> Статистика</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div class="p-3">
+                                <i class="bi bi-plus-circle text-success" style="font-size: 2rem;"></i>
+                                <h3 class="mt-2 mb-0" id="created-count">0</h3>
+                                <small class="text-muted">Створено</small>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-3">
+                                <i class="bi bi-pencil-square text-warning" style="font-size: 2rem;"></i>
+                                <h3 class="mt-2 mb-0" id="updated-count">0</h3>
+                                <small class="text-muted">Оновлено</small>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-3">
+                                <i class="bi bi-trash text-danger" style="font-size: 2rem;"></i>
+                                <h3 class="mt-2 mb-0" id="deleted-count">0</h3>
+                                <small class="text-muted">Видалено</small>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-center">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="clearStats()">
+                            <i class="bi bi-arrow-counterclockwise"></i> Скинути статистику
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Швидкі дії</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="/Appointments" class="btn btn-primary">
+                            <i class="bi bi-calendar3"></i> Переглянути всі записи
+                        </a>
+                        <a href="/Appointments/Create" class="btn btn-success">
+                            <i class="bi bi-plus-circle"></i> Створити новий запис
+                        </a>
+                        <a href="/Doctors" class="btn btn-info">
+                            <i class="bi bi-people"></i> Список лікарів
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Dashboard specific variables - defined globally for SignalR script
+        window.createdCount = 0;
+        window.updatedCount = 0;
+        window.deletedCount = 0;
+
+        // Make functions global so they can be called from SignalR script
+        window.addEvent = function(type, message, iconClass, badgeClass) {
+            const eventsList = document.getElementById('events-list');
+            
+            const waitingMsg = eventsList.querySelector('.text-muted.text-center');
+            if (waitingMsg) {
+                waitingMsg.remove();
+            }
+
+            const timestamp = new Date().toLocaleTimeString('uk-UA');
+            const eventHtml = `
+                <div class="alert alert-dismissible fade show ${badgeClass}" role="alert" style="animation: slideIn 0.3s ease;">
+                    <i class="${iconClass} me-2"></i>
+                    <strong>${type}:</strong> ${message}
+                    <br />
+                    <small class="text-muted"><i class="bi bi-clock"></i> ${timestamp}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            eventsList.insertAdjacentHTML('afterbegin', eventHtml);
+            
+            const alerts = eventsList.querySelectorAll('.alert');
+            if (alerts.length > 15) {
+                alerts[alerts.length - 1].remove();
+            }
+        };
+
+        window.updateCounter = function(counterId, value) {
+            const counter = document.getElementById(counterId);
+            counter.textContent = value;
+            counter.classList.add('fw-bold');
+            counter.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                counter.classList.remove('fw-bold');
+                counter.style.transform = 'scale(1)';
+            }, 300);
+        };
+
+        function clearStats() {
+            window.createdCount = 0;
+            window.updatedCount = 0;
+            window.deletedCount = 0;
+            updateCounter('created-count', 0);
+            updateCounter('updated-count', 0);
+            updateCounter('deleted-count', 0);
+            
+            const eventsList = document.getElementById('events-list');
+            eventsList.innerHTML = `
+                <p class="text-muted text-center py-4">
+                    <i class="bi bi-hourglass-split"></i> Очікування подій...
+                </p>
+            `;
+        }
+
+        // Update connection status in dashboard header
+        if (typeof connection !== 'undefined') {
+            connection.onreconnecting(() => {
+                const statusElement = document.getElementById('connection-status');
+                if (statusElement) {
+                    statusElement.innerHTML = '<i class="bi bi-arrow-repeat"></i> З\'єднання...';
+                    statusElement.classList.remove('bg-success');
+                    statusElement.classList.add('bg-warning');
+                }
+            });
+
+            connection.onreconnected(() => {
+                const statusElement = document.getElementById('connection-status');
+                if (statusElement) {
+                    statusElement.innerHTML = '<i class="bi bi-wifi"></i> Підключено';
+                    statusElement.classList.remove('bg-warning');
+                    statusElement.classList.add('bg-success');
+                }
+            });
+
+            connection.onclose(() => {
+                const statusElement = document.getElementById('connection-status');
+                if (statusElement) {
+                    statusElement.innerHTML = '<i class="bi bi-wifi-off"></i> Відключено';
+                    statusElement.classList.remove('bg-success', 'bg-warning');
+                    statusElement.classList.add('bg-danger');
+                }
+            });
+        }
+    </script>
+    <style>
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        #created-count, #updated-count, #deleted-count {
+            transition: all 0.3s ease;
+        }
+    </style>
+}

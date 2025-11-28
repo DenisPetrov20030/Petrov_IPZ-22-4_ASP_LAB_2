@@ -1,0 +1,203 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using HospitalSystem.Data.Models;
+using HospitalSystem.Data.Repositories;
+using HospitalSystem.Models.ViewModels;
+using HospitalSystem.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using HospitalSystem.Hubs;
+
+namespace HospitalSystem.Controllers
+{
+    [Authorize]
+    public class AppointmentsController : Controller
+    {
+        private IHospitalRepository repository;
+        private readonly IHubContext<AppointmentHub> _hubContext;
+        public int PageSize = 5;
+        private const string SessionKeyDraft = "AppointmentDraft";
+
+        public AppointmentsController(IHospitalRepository repo, IHubContext<AppointmentHub> hubContext)
+        {
+            repository = repo;
+            _hubContext = hubContext;
+        }
+
+        // GET: /Appointments/
+        public IActionResult Index(string? department, int page = 1)
+        {
+            var query = repository.Appointments.AsQueryable();
+
+            if (!string.IsNullOrEmpty(department))
+            {
+                query = query.Where(a => a.Department == department);
+            }
+
+            var totalItems = query.Count();
+
+            var appointments = query
+                .OrderBy(a => a.AppointmentDate)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
+            var viewModel = new AppointmentsListViewModel
+            {
+                Appointments = appointments,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = totalItems
+                },
+                CurrentDepartment = department
+            };
+
+            return View(viewModel);
+        }
+
+        // GET: /Appointments/Details/5
+        public IActionResult Details(long id)
+        {
+            var appointment = repository.GetAppointmentById(id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            return View(appointment);
+        }
+
+        // GET: /Appointments/Create
+        public IActionResult Create()
+        {
+            var draft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft);
+            
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName");
+            
+            if (draft != null)
+            {
+                ViewBag.HasDraft = true;
+                return View(draft);
+            }
+
+            return View(new Appointment());
+        }
+
+        // POST: /Appointments/Create
+        [HttpPost]
+        public IActionResult Create(Appointment appointment, string action)
+        {
+            if (action == "SaveDraft")
+            {
+                HttpContext.Session.SetJson(SessionKeyDraft, appointment);
+                TempData["Message"] = "Чернетку збережено! Ви можете продовжити пізніше.";
+                return RedirectToAction("Index");
+            }
+
+            if (action == "ClearDraft")
+            {
+                HttpContext.Session.Remove(SessionKeyDraft);
+                TempData["Message"] = "Чернетку очищено.";
+                return RedirectToAction("Create");
+            }
+
+            if (ModelState.IsValid)
+            {
+                repository.CreateAppointment(appointment);
+                
+                HttpContext.Session.Remove(SessionKeyDraft);
+                
+                // Notify all clients about new appointment
+                await _hubContext.Clients.All.SendAsync("AppointmentCreated", new
+                {
+                    appointmentId = appointment.AppointmentID,
+                    patientName = appointment.PatientName,
+                    doctorName = appointment.DoctorName,
+                    appointmentDate = appointment.AppointmentDate,
+                    department = appointment.Department,
+                    message = $"Новий запис створено: {appointment.PatientName} до {appointment.DoctorName} на {appointment.AppointmentDate:dd.MM.yyyy HH:mm}"
+                });
+                
+                TempData["Success"] = "Запис успішно створено!";
+                return RedirectToAction("Index");
+            }
+            
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName");
+            ViewBag.HasDraft = HttpContext.Session.GetJson<Appointment>(SessionKeyDraft) != null;
+            return View(appointment);
+        }
+
+        // GET: /Appointments/Edit/5
+        public IActionResult Edit(long id)
+        {
+            var appointment = repository.GetAppointmentById(id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName", appointment.DoctorID);
+            return View(appointment);
+        }
+
+        // POST: /Appointments/Edit/5
+        [HttpPost]
+        public async Task<IActionResult> Edit(Appointment appointment)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.UpdateAppointment(appointment);
+                
+                // Notify all clients about updated appointment
+                await _hubContext.Clients.All.SendAsync("AppointmentUpdated", new
+                {
+                    appointmentId = appointment.AppointmentID,
+                    patientName = appointment.PatientName,
+                    doctorName = appointment.DoctorName,
+                    appointmentDate = appointment.AppointmentDate,
+                    department = appointment.Department,
+                    message = $"Запис оновлено: {appointment.PatientName} до {appointment.DoctorName} на {appointment.AppointmentDate:dd.MM.yyyy HH:mm}"
+                });
+                
+                TempData["Success"] = "Запис оновлено!";
+                return RedirectToAction("Index");
+            }
+            
+            ViewBag.Doctors = new SelectList(repository.Doctors.ToList(), "DoctorID", "FullName", appointment.DoctorID);
+            return View(appointment);
+        }
+
+        // GET: /Appointments/Delete/5
+        public IActionResult Delete(long id)
+        {
+            var appointment = repository.GetAppointmentById(id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            return View(appointment);
+        }
+
+        // POST: /Appointments/Delete/5
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(long id)
+        {
+            var appointment = repository.GetAppointmentById(id);
+            if (appointment != null)
+            {
+                repository.DeleteAppointment(appointment);
+                TempData["Success"] = "Запис видалено!";
+            }
+            return RedirectToAction("Index");
+        }
+
+        // GET: /Appointments/ClearDraft
+        public IActionResult ClearDraft()
+        {
+            HttpContext.Session.Remove(SessionKeyDraft);
+            TempData["Message"] = "Чернетку очищено.";
+            return RedirectToAction("Create");
+        }
+    }
+}

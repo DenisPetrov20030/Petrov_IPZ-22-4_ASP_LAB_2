@@ -2,10 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using HospitalSystem.Data.Models;
 using HospitalSystem.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
+using HospitalSystem.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSignalR();
 
 builder.Services.AddDbContext<HospitalDbContext>(opts => {
 	opts.UseSqlite(builder.Configuration["ConnectionStrings:HospitalConnection"]);
@@ -71,5 +74,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
+app.MapHub<AppointmentHub>("/appointmentHub");
 
 app.Run();

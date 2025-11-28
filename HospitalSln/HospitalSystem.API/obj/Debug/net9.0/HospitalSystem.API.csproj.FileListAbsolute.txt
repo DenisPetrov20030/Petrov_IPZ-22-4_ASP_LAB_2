@@ -165,3 +165,4 @@ D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.API\obj\Debug\net9.0\refint\
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.API\obj\Debug\net9.0\HospitalSystem.API.pdb
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.API\obj\Debug\net9.0\HospitalSystem.API.genruntimeconfig.cache
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.API\obj\Debug\net9.0\ref\HospitalSystem.API.dll
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

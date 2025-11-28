@@ -1,0 +1,251 @@
+// SignalR connection for real-time appointment updates
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/appointmentHub")
+    .withAutomaticReconnect()
+    .build();
+
+// Global notification counter
+let notificationCount = 0;
+
+// Start the connection
+async function startConnection() {
+    try {
+        await connection.start();
+        console.log("SignalR Connected");
+        showConnectionStatus('connected');
+    } catch (err) {
+        console.error("SignalR Connection Error: ", err);
+        showConnectionStatus('disconnected');
+        setTimeout(startConnection, 5000);
+    }
+}
+
+// Reconnection handlers
+connection.onreconnecting((error) => {
+    console.warn("SignalR Reconnecting...", error);
+    showConnectionStatus('reconnecting');
+});
+
+connection.onreconnected((connectionId) => {
+    console.log("SignalR Reconnected: ", connectionId);
+    showConnectionStatus('connected');
+});
+
+connection.onclose((error) => {
+    console.error("SignalR Connection Closed", error);
+    showConnectionStatus('disconnected');
+    setTimeout(startConnection, 5000);
+});
+
+// Listen for appointment created events
+connection.on("AppointmentCreated", (data) => {
+    console.log("Appointment Created:", data);
+    
+    const availableMessage = `?? Нова година зайнята!<br/>` +
+        `<strong>Лікар:</strong> ${data.doctorName}<br/>` +
+        `<strong>Дата:</strong> ${formatDateTime(data.appointmentDate)}<br/>` +
+        `<strong>Відділення:</strong> ${data.department}`;
+    
+    showNotification("success", availableMessage, "Запис створено");
+    
+    // Update dashboard if present
+    if (typeof addEvent === 'function') {
+        addEvent('Створено запис', data.message, 'bi bi-plus-circle-fill', 'alert-success');
+        createdCount++;
+        updateCounter('created-count', createdCount);
+    }
+    
+    // Reload the page to show new appointment
+    if (window.location.pathname.toLowerCase().includes('/appointments')) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    }
+});
+
+// Listen for appointment updated events
+connection.on("AppointmentUpdated", (data) => {
+    console.log("Appointment Updated:", data);
+    
+    const availableMessage = `?? Запис перенесено!<br/>` +
+        `<strong>Лікар:</strong> ${data.doctorName}<br/>` +
+        `<strong>Нова дата:</strong> ${formatDateTime(data.appointmentDate)}<br/>` +
+        `<strong>Відділення:</strong> ${data.department}`;
+    
+    showNotification("info", availableMessage, "Запис оновлено");
+    
+    // Update dashboard if present
+    if (typeof addEvent === 'function') {
+        addEvent('Оновлено запис', data.message, 'bi bi-pencil-square', 'alert-warning');
+        updatedCount++;
+        updateCounter('updated-count', updatedCount);
+    }
+    
+    // Reload the page to show updated appointment
+    if (window.location.pathname.toLowerCase().includes('/appointments')) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    }
+});
+
+// Listen for appointment deleted events
+connection.on("AppointmentDeleted", (data) => {
+    console.log("Appointment Deleted:", data);
+    
+    const availableMessage = `? Година звільнена!<br/>` +
+        `<strong>Лікар:</strong> ${data.doctorName}<br/>` +
+        `<strong>Доступна дата:</strong> ${formatDateTime(data.appointmentDate)}<br/>` +
+        `<em>Тепер ви можете записатись на цей час!</em>`;
+    
+    showNotification("warning", availableMessage, "Запис скасовано");
+    
+    // Update dashboard if present
+    if (typeof addEvent === 'function') {
+        addEvent('Видалено запис', data.message, 'bi bi-trash-fill', 'alert-danger');
+        deletedCount++;
+        updateCounter('deleted-count', deletedCount);
+    }
+    
+    // Remove the appointment row from table if exists
+    const row = document.querySelector(`tr[data-appointment-id="${data.appointmentId}"]`);
+    if (row) {
+        row.classList.add('table-danger');
+        setTimeout(() => {
+            row.remove();
+        }, 1500);
+    }
+    
+    // Reload the page after a delay
+    if (window.location.pathname.toLowerCase().includes('/appointments')) {
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    }
+});
+
+// Show connection status indicator
+function showConnectionStatus(status) {
+    let statusBadge = document.getElementById('signalr-status');
+    if (!statusBadge) {
+        statusBadge = document.createElement('div');
+        statusBadge.id = 'signalr-status';
+        statusBadge.style.cssText = 'position:fixed;bottom:20px;left:20px;z-index:9998;padding:8px 15px;border-radius:20px;font-size:12px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:all 0.3s;';
+        document.body.appendChild(statusBadge);
+    }
+    
+    switch(status) {
+        case 'connected':
+            statusBadge.innerHTML = '<i class="bi bi-wifi"></i> Підключено';
+            statusBadge.style.backgroundColor = '#198754';
+            statusBadge.style.color = 'white';
+            break;
+        case 'reconnecting':
+            statusBadge.innerHTML = '<i class="bi bi-arrow-repeat"></i> З\'єднання...';
+            statusBadge.style.backgroundColor = '#ffc107';
+            statusBadge.style.color = '#000';
+            break;
+        case 'disconnected':
+            statusBadge.innerHTML = '<i class="bi bi-wifi-off"></i> Відключено';
+            statusBadge.style.backgroundColor = '#dc3545';
+            statusBadge.style.color = 'white';
+            break;
+    }
+}
+
+// Format date and time
+function formatDateTime(dateString) {
+    const date = new Date(dateString);
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit' 
+    };
+    return date.toLocaleDateString('uk-UA', options);
+}
+
+// Show notification using Bootstrap toast with enhanced design
+function showNotification(type, message, title = '') {
+    notificationCount++;
+    
+    // Create toast container if it doesn't exist
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
+        toastContainer.style.zIndex = '9999';
+        document.body.appendChild(toastContainer);
+    }
+    
+    // Create toast element with enhanced design
+    const toastId = 'toast-' + Date.now() + '-' + notificationCount;
+    const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                     type === 'warning' ? 'bi-clock-history' : 
+                     'bi-info-circle-fill';
+    const bgClass = type === 'success' ? 'bg-success' : 
+                   type === 'warning' ? 'bg-warning' : 
+                   'bg-info';
+    
+    const titleHtml = title ? `<div class="toast-header ${bgClass} text-white">
+                <i class="bi ${iconClass} me-2"></i>
+                <strong class="me-auto">${title}</strong>
+                <small>${new Date().toLocaleTimeString('uk-UA')}</small>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>` : '';
+    
+    const toastHTML = `
+        <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: 350px;">
+            ${titleHtml}
+            <div class="toast-body ${!title ? bgClass + ' text-white' : ''}" style="${!title ? 'font-size: 14px;' : ''}">
+                ${!title ? '<i class="bi ' + iconClass + ' me-2"></i>' : ''}
+                ${message}
+                ${!title ? '<button type="button" class="btn-close btn-close-white ms-2 float-end" data-bs-dismiss="toast" aria-label="Close"></button>' : ''}
+            </div>
+        </div>
+    `;
+    
+    toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+    
+    const toastElement = document.getElementById(toastId);
+    const toast = new bootstrap.Toast(toastElement, { delay: 7000 });
+    toast.show();
+    
+    // Add sound notification
+    playNotificationSound(type);
+    
+    // Remove toast after it's hidden
+    toastElement.addEventListener('hidden.bs.toast', () => {
+        toastElement.remove();
+    });
+}
+
+// Play notification sound (optional)
+function playNotificationSound(type) {
+    try {
+        // Create a simple beep sound using Web Audio API
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        // Different frequencies for different notification types
+        oscillator.frequency.value = type === 'success' ? 800 : type === 'warning' ? 600 : 700;
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.1);
+    } catch (e) {
+        console.log('Sound notification not supported');
+    }
+}
+
+// Start the connection when the page loads
+startConnection();

@@ -1,0 +1,388 @@
+﻿# SignalR Code Examples - Основні приклади коду
+
+## 1. Створення SignalR Hub
+
+```csharp
+// HospitalSystem/Hubs/AppointmentHub.cs
+using Microsoft.AspNetCore.SignalR;
+
+namespace HospitalSystem.Hubs
+{
+    public class AppointmentHub : Hub
+    {
+        // Метод для сповіщення про створення запису
+        public async Task NotifyAppointmentCreated(
+            long appointmentId, 
+            string patientName, 
+            string doctorName, 
+            DateTime appointmentDate, 
+            string department)
+        {
+            await Clients.All.SendAsync("AppointmentCreated", new
+            {
+                appointmentId,
+                patientName,
+                doctorName,
+                appointmentDate,
+                department,
+                message = $"Новий запис створено: {patientName} до {doctorName}"
+            });
+        }
+    }
+}
+```
+
+## 2. Конфігурація в Program.cs
+
+```csharp
+// HospitalSystem/Program.cs
+using HospitalSystem.Hubs;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Додаємо SignalR сервіси
+builder.Services.AddSignalR();
+
+// Інші сервіси...
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+// Мапуємо SignalR Hub на URL
+app.MapHub<AppointmentHub>("/appointmentHub");
+
+app.Run();
+```
+
+## 3. Використання в Controller
+
+```csharp
+// HospitalSystem/Controllers/AppointmentsController.cs
+using Microsoft.AspNetCore.SignalR;
+using HospitalSystem.Hubs;
+
+public class AppointmentsController : Controller
+{
+    private readonly IHubContext<AppointmentHub> _hubContext;
+
+    // Dependency Injection
+    public AppointmentsController(
+        IHospitalRepository repo, 
+        IHubContext<AppointmentHub> hubContext)
+    {
+        repository = repo;
+        _hubContext = hubContext;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(Appointment appointment)
+    {
+        if (ModelState.IsValid)
+        {
+            repository.CreateAppointment(appointment);
+            
+            // Відправляємо повідомлення всім підключеним клієнтам
+            await _hubContext.Clients.All.SendAsync("AppointmentCreated", new
+            {
+                appointmentId = appointment.AppointmentID,
+                patientName = appointment.PatientName,
+                doctorName = appointment.DoctorName,
+                appointmentDate = appointment.AppointmentDate,
+                department = appointment.Department,
+                message = $"Новий запис: {appointment.PatientName}"
+            });
+            
+            return RedirectToAction("Index");
+        }
+        return View(appointment);
+    }
+}
+```
+
+## 4. JavaScript Client - Підключення
+
+```javascript
+// HospitalSystem/wwwroot/js/appointment-signalr.js
+
+// Створюємо з'єднання з Hub
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/appointmentHub")              // URL Hub'а
+    .withAutomaticReconnect()                // Автоматичне перепідключення
+    .build();
+
+// Запускаємо з'єднання
+async function startConnection() {
+    try {
+        await connection.start();
+        console.log("SignalR Connected");
+    } catch (err) {
+        console.error("Connection Error:", err);
+        setTimeout(startConnection, 5000);   // Повтор через 5 сек
+    }
+}
+
+startConnection();
+```
+
+## 5. JavaScript Client - Обробка подій
+
+```javascript
+// Слухаємо подію "AppointmentCreated"
+connection.on("AppointmentCreated", (data) => {
+    console.log("New appointment:", data);
+    
+    // Показуємо повідомлення
+    showNotification("success", data.message);
+    
+    // Оновлюємо сторінку через 2 секунди
+    setTimeout(() => {
+        window.location.reload();
+    }, 2000);
+});
+
+// Слухаємо подію "AppointmentUpdated"
+connection.on("AppointmentUpdated", (data) => {
+    showNotification("info", data.message);
+});
+
+// Слухаємо подію "AppointmentDeleted"
+connection.on("AppointmentDeleted", (data) => {
+    showNotification("warning", data.message);
+    
+    // Видаляємо рядок з таблиці
+    const row = document.querySelector(`tr[data-appointment-id="${data.appointmentId}"]`);
+    if (row) {
+        row.remove();
+    }
+});
+```
+
+## 6. JavaScript - Bootstrap Toast Notification
+
+```javascript
+function showNotification(type, message) {
+    // Створюємо контейнер для toast
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.className = 'toast-container position-fixed top-0 end-0 p-3';
+        container.style.zIndex = '9999';
+        document.body.appendChild(container);
+    }
+    
+    // Вибираємо колір та іконку
+    const bgClass = type === 'success' ? 'bg-success' : 
+                   type === 'warning' ? 'bg-warning' : 'bg-info';
+    const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                     type === 'warning' ? 'bi-exclamation-triangle-fill' : 
+                     'bi-info-circle-fill';
+    
+    // HTML для toast
+    const toastId = 'toast-' + Date.now();
+    const toastHTML = `
+        <div id="${toastId}" class="toast align-items-center text-white ${bgClass} border-0">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi ${iconClass} me-2"></i>
+                    ${message}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+                        data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', toastHTML);
+    
+    // Показуємо toast
+    const toastElement = document.getElementById(toastId);
+    const toast = new bootstrap.Toast(toastElement, { delay: 5000 });
+    toast.show();
+}
+```
+
+## 7. Razor View - Підключення JavaScript
+
+```razor
+<!-- HospitalSystem/Views/Shared/_Layout.cshtml -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    @RenderBody()
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- SignalR -->
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@8.0.0/dist/browser/signalr.min.js"></script>
+    
+    <!-- Наш код тільки для автентифікованих користувачів -->
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <script src="~/js/appointment-signalr.js"></script>
+    }
+</body>
+</html>
+```
+
+## 8. Розширені можливості - Групи
+
+```csharp
+// Відправлення повідомлення тільки певній групі (наприклад, відділенню)
+public class AppointmentsController : Controller
+{
+    [HttpPost]
+    public async Task<IActionResult> Create(Appointment appointment)
+    {
+        repository.CreateAppointment(appointment);
+        
+        // Відправляємо тільки користувачам відділення
+        await _hubContext.Clients.Group(appointment.Department)
+            .SendAsync("AppointmentCreated", new { ... });
+        
+        return RedirectToAction("Index");
+    }
+}
+
+// В Hub - додавання користувача до групи
+public class AppointmentHub : Hub
+{
+    public async Task JoinDepartmentGroup(string department)
+    {
+        await Groups.AddToGroupAsync(Context.ConnectionId, department);
+    }
+}
+```
+
+## 9. JavaScript - Приєднання до групи
+
+```javascript
+// Після підключення приєднуємося до групи відділення
+connection.start().then(() => {
+    // Отримуємо відділення користувача (наприклад, з HTML атрибута)
+    const department = document.body.dataset.userDepartment;
+    if (department) {
+        connection.invoke("JoinDepartmentGroup", department);
+    }
+});
+```
+
+## 10. Обробка помилок та перепідключення
+
+```javascript
+// Обробники стану з'єднання
+connection.onreconnecting((error) => {
+    console.warn("Reconnecting...", error);
+    updateConnectionStatus("warning", "Reconnecting...");
+});
+
+connection.onreconnected((connectionId) => {
+    console.log("Reconnected:", connectionId);
+    updateConnectionStatus("success", "Connected");
+});
+
+connection.onclose((error) => {
+    console.error("Connection closed", error);
+    updateConnectionStatus("danger", "Disconnected");
+    
+    // Спробувати перепідключитися через 5 секунд
+    setTimeout(startConnection, 5000);
+});
+
+function updateConnectionStatus(type, text) {
+    const badge = document.getElementById('connection-status');
+    if (badge) {
+        badge.className = `badge bg-${type}`;
+        badge.textContent = text;
+    }
+}
+```
+
+## 11. Dashboard - Лічильники подій
+
+```javascript
+let createdCount = 0;
+let updatedCount = 0;
+let deletedCount = 0;
+
+connection.on("AppointmentCreated", (data) => {
+    createdCount++;
+    document.getElementById('created-count').textContent = createdCount;
+    addEventToList('Створено', data.message, 'success');
+});
+
+connection.on("AppointmentUpdated", (data) => {
+    updatedCount++;
+    document.getElementById('updated-count').textContent = updatedCount;
+    addEventToList('Оновлено', data.message, 'warning');
+});
+
+connection.on("AppointmentDeleted", (data) => {
+    deletedCount++;
+    document.getElementById('deleted-count').textContent = deletedCount;
+    addEventToList('Видалено', data.message, 'danger');
+});
+
+function addEventToList(type, message, alertClass) {
+    const list = document.getElementById('events-list');
+    const timestamp = new Date().toLocaleTimeString();
+    
+    const html = `
+        <div class="alert alert-${alertClass}">
+            <strong>${type}:</strong> ${message}
+            <br><small>${timestamp}</small>
+        </div>
+    `;
+    
+    list.insertAdjacentHTML('afterbegin', html);
+}
+```
+
+## 12. Razor View - Data Attribute для JS
+
+```razor
+<!-- Додаємо data-appointment-id для роботи з DOM -->
+@model Appointment
+
+<tr data-appointment-id="@Model.AppointmentID">
+    <td>@Model.PatientName</td>
+    <td>@Model.DoctorName</td>
+    <td>@Model.AppointmentDate.ToString("dd.MM.yyyy HH:mm")</td>
+</tr>
+```
+
+## Корисні команди для тестування
+
+### Перевірка підключення в Console
+```javascript
+// Перевірити статус з'єднання
+connection.state
+// "Connected", "Disconnected", "Reconnecting"
+
+// Вручну відправити подію (для тестування)
+connection.invoke("NotifyAppointmentCreated", 
+    123, "Іванов І.І.", "Доктор Петров", new Date(), "Кардіологія");
+```
+
+### Симуляція відключення
+```javascript
+// В Chrome DevTools Console
+connection.stop();  // Зупинити з'єднання
+connection.start(); // Знову підключитися
+```
+
+## Підсумок основних концепцій
+
+1. **Hub** - серверний клас, який обробляє повідомлення
+2. **Clients.All** - відправка всім підключеним клієнтам
+3. **connection.on()** - слухання подій на клієнті
+4. **connection.invoke()** - виклик методу Hub'а з клієнта
+5. **withAutomaticReconnect()** - автоматичне перепідключення
+6. **Groups** - групування користувачів для цільової розсилки
+
+Всі ці приклади працюють разом для створення повноцінної real-time системи оновлення записів у Hospital System!

@@ -206,6 +206,12 @@
 									<i class="bi bi-calendar3"></i> Записи
 								</a>
 							</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/Appointments/Dashboard">
+								<i class="bi bi-broadcast"></i> Моніторинг
+							</a>
+						</li>
+
 							<li class="nav-item">
 								<a class="nav-link" href="/Doctors">
 									<i class="bi bi-people"></i> Лікарі
@@ -276,6 +282,15 @@
 
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<!-- SignalR -->
+	<script src="https://cdn.jsdelivr.net/npm/@@microsoft/signalr@8.0.0/dist/browser/signalr.min.js"></script>
+	
+	@if (User.Identity?.IsAuthenticated == true)
+	{
+		<!-- SignalR for real-time appointment updates -->
+		<script src="~/js/appointment-signalr.js"></script>
+	}
 	
 	@RenderSection("Scripts", required: false)
 </body>

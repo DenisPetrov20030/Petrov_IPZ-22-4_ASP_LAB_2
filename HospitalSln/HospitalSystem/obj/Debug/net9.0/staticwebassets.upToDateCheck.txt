@@ -1,4 +1,5 @@
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\css\bootstrap-reboot.rtl.min.css
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\js\appointment-signalr.js
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\js\bootstrap.esm.min.js
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\css\bootstrap-utilities.min.css
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\css\bootstrap-reboot.rtl.css
@@ -42,6 +43,7 @@ D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\css\bo
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\js\bootstrap.bundle.js
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\js\bootstrap.esm.js
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\wwwroot\lib\bootstrap\js\bootstrap.min.js
+wwwroot\js\appointment-signalr.js
 wwwroot\lib\bootstrap\css\bootstrap.css
 wwwroot\lib\bootstrap\css\bootstrap.css.map
 wwwroot\lib\bootstrap\css\bootstrap.min.css

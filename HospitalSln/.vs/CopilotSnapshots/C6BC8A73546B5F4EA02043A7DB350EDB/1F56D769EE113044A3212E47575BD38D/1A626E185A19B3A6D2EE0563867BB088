@@ -1,0 +1,195 @@
+﻿@{
+    ViewData["Title"] = "Real-Time Dashboard";
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-broadcast"></i> Real-Time Appointment Dashboard
+                        <span class="badge bg-success ms-2" id="connection-status">
+                            <i class="bi bi-circle-fill"></i> Connected
+                        </span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-clock-history"></i> Останні події</h5>
+                </div>
+                <div class="card-body">
+                    <div id="events-list" style="max-height: 400px; overflow-y: auto;">
+                        <p class="text-muted text-center py-4">
+                            <i class="bi bi-hourglass-split"></i> Очікування подій...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="bi bi-graph-up"></i> Статистика</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div class="p-3">
+                                <i class="bi bi-plus-circle text-success" style="font-size: 2rem;"></i>
+                                <h3 class="mt-2 mb-0" id="created-count">0</h3>
+                                <small class="text-muted">Створено</small>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-3">
+                                <i class="bi bi-pencil-square text-warning" style="font-size: 2rem;"></i>
+                                <h3 class="mt-2 mb-0" id="updated-count">0</h3>
+                                <small class="text-muted">Оновлено</small>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-3">
+                                <i class="bi bi-trash text-danger" style="font-size: 2rem;"></i>
+                                <h3 class="mt-2 mb-0" id="deleted-count">0</h3>
+                                <small class="text-muted">Видалено</small>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-center">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="clearStats()">
+                            <i class="bi bi-arrow-counterclockwise"></i> Скинути статистику
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Швидкі дії</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="/Appointments" class="btn btn-primary">
+                            <i class="bi bi-calendar3"></i> Переглянути всі записи
+                        </a>
+                        <a href="/Appointments/Create" class="btn btn-success">
+                            <i class="bi bi-plus-circle"></i> Створити новий запис
+                        </a>
+                        <a href="/Doctors" class="btn btn-info">
+                            <i class="bi bi-people"></i> Список лікарів
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let createdCount = 0;
+        let updatedCount = 0;
+        let deletedCount = 0;
+
+        function addEvent(type, message, iconClass, badgeClass) {
+            const eventsList = document.getElementById('events-list');
+            
+            const waitingMsg = eventsList.querySelector('.text-muted.text-center');
+            if (waitingMsg) {
+                waitingMsg.remove();
+            }
+
+            const timestamp = new Date().toLocaleTimeString('uk-UA');
+            const eventHtml = `
+                <div class="alert alert-dismissible fade show ${badgeClass}" role="alert">
+                    <i class="${iconClass} me-2"></i>
+                    <strong>${type}:</strong> ${message}
+                    <br />
+                    <small class="text-muted"><i class="bi bi-clock"></i> ${timestamp}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            eventsList.insertAdjacentHTML('afterbegin', eventHtml);
+            
+            const alerts = eventsList.querySelectorAll('.alert');
+            if (alerts.length > 10) {
+                alerts[alerts.length - 1].remove();
+            }
+        }
+
+        function updateCounter(counterId, value) {
+            const counter = document.getElementById(counterId);
+            counter.textContent = value;
+            counter.classList.add('fw-bold');
+            setTimeout(() => counter.classList.remove('fw-bold'), 300);
+        }
+
+        function clearStats() {
+            createdCount = 0;
+            updatedCount = 0;
+            deletedCount = 0;
+            updateCounter('created-count', 0);
+            updateCounter('updated-count', 0);
+            updateCounter('deleted-count', 0);
+            
+            const eventsList = document.getElementById('events-list');
+            eventsList.innerHTML = `
+                <p class="text-muted text-center py-4">
+                    <i class="bi bi-hourglass-split"></i> Очікування подій...
+                </p>
+            `;
+        }
+
+        if (typeof connection !== 'undefined') {
+            connection.onreconnecting(() => {
+                document.getElementById('connection-status').innerHTML = 
+                    '<i class="bi bi-circle-fill"></i> Reconnecting...';
+                document.getElementById('connection-status').classList.remove('bg-success');
+                document.getElementById('connection-status').classList.add('bg-warning');
+            });
+
+            connection.onreconnected(() => {
+                document.getElementById('connection-status').innerHTML = 
+                    '<i class="bi bi-circle-fill"></i> Connected';
+                document.getElementById('connection-status').classList.remove('bg-warning');
+                document.getElementById('connection-status').classList.add('bg-success');
+            });
+
+            connection.onclose(() => {
+                document.getElementById('connection-status').innerHTML = 
+                    '<i class="bi bi-circle-fill"></i> Disconnected';
+                document.getElementById('connection-status').classList.remove('bg-success', 'bg-warning');
+                document.getElementById('connection-status').classList.add('bg-danger');
+            });
+
+            const originalCreatedHandler = connection.handlers.AppointmentCreated;
+            connection.on("AppointmentCreated", (data) => {
+                createdCount++;
+                updateCounter('created-count', createdCount);
+                addEvent('Створено запис', data.message, 'bi bi-plus-circle-fill', 'alert-success');
+            });
+
+            connection.on("AppointmentUpdated", (data) => {
+                updatedCount++;
+                updateCounter('updated-count', updatedCount);
+                addEvent('Оновлено запис', data.message, 'bi bi-pencil-square', 'alert-warning');
+            });
+
+            connection.on("AppointmentDeleted", (data) => {
+                deletedCount++;
+                updateCounter('deleted-count', deletedCount);
+                addEvent('Видалено запис', data.message, 'bi bi-trash-fill', 'alert-danger');
+            });
+        }
+    </script>
+}

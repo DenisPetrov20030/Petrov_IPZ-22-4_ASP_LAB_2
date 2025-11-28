@@ -1184,3 +1184,4 @@ D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.BlazorWasm\obj\Debug\net9.0\
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.BlazorWasm\obj\Debug\net9.0\refint\HospitalSystem.BlazorWasm.dll
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.BlazorWasm\obj\Debug\net9.0\HospitalSystem.BlazorWasm.pdb
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.BlazorWasm\obj\Debug\net9.0\ref\HospitalSystem.BlazorWasm.dll
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.BlazorWasm\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
