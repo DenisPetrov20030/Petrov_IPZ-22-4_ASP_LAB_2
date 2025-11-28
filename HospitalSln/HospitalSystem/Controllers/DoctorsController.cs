@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using HospitalSystem.Models;
+using HospitalSystem.Data.Models;
+using HospitalSystem.Data.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HospitalSystem.Controllers
 {
+    [Authorize(Roles = "Doctor,Admin")]
     public class DoctorsController : Controller
     {
         private IHospitalRepository repository;
@@ -12,6 +15,7 @@ namespace HospitalSystem.Controllers
             repository = repo;
         }
 
+        [AllowAnonymous]
         // GET: /Doctors/
         public IActionResult Index()
         {
@@ -19,6 +23,7 @@ namespace HospitalSystem.Controllers
             return View(doctors);
         }
 
+        [AllowAnonymous]
         // GET: /Doctors/Details/5
         public IActionResult Details(long id)
         {
@@ -43,7 +48,7 @@ namespace HospitalSystem.Controllers
             if (ModelState.IsValid)
             {
                 repository.CreateDoctor(doctor);
-                TempData["Success"] = "Лікаря додано успішно!";
+                TempData["Success"] = "Лікаря успішно додано!";
                 return RedirectToAction("Index");
             }
             return View(doctor);

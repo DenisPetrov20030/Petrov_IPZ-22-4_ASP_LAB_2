@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using HospitalSystem.Models;
-using HospitalSystem.Data;
+using HospitalSystem.Data.Models;
+using HospitalSystem.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,31 @@ builder.Services.AddDbContext<HospitalDbContext>(opts => {
 	opts.UseSqlite(builder.Configuration["ConnectionStrings:HospitalConnection"]);
 });
 
+builder.Services.AddDbContext<AppIdentityDbContext>(options => 
+	options.UseSqlite(builder.Configuration["ConnectionStrings:IdentityConnection"])
+);
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => {
+	options.Password.RequiredLength = 8;
+	options.Password.RequireDigit = true;
+	options.Password.RequireUppercase = true;
+	options.Password.RequireLowercase = true;
+	options.Password.RequireNonAlphanumeric = false;
+	options.User.RequireUniqueEmail = true;
+})
+.AddEntityFrameworkStores<AppIdentityDbContext>()
+.AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+	options.LoginPath = "/Account/Login";
+	options.LogoutPath = "/Account/Logout";
+	options.AccessDeniedPath = "/Account/AccessDenied";
+});
+
 builder.Services.AddScoped<IHospitalRepository, EFHospitalRepository>();
+
+builder.Services.AddRazorPages();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -23,11 +48,27 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-// SeedData.EnsurePopulated(app);
+using (var scope = app.Services.CreateScope())
+{
+	var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+	
+	string[] roles = { "Patient", "Doctor", "Admin" };
+	
+	foreach (var role in roles)
+	{
+		if (!await roleManager.RoleExistsAsync(role))
+		{
+			await roleManager.CreateAsync(new IdentityRole(role));
+		}
+	}
+}
 
 app.UseStaticFiles();
 
 app.UseSession();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
 

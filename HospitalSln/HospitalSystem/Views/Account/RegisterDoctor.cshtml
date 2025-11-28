@@ -1,0 +1,75 @@
+@model HospitalSystem.Models.ViewModels.RegisterModel
+
+<div class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card shadow-sm">
+				<div class="card-header bg-success text-white">
+					<h4><i class="bi bi-heart-pulse-fill"></i> Реєстрація лікаря</h4>
+				</div>
+				<div class="card-body">
+					<form asp-action="RegisterDoctor" method="post">
+						<div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+						<input type="hidden" asp-for="Role" value="Doctor" />
+
+						<div class="alert alert-info">
+							<i class="bi bi-info-circle-fill"></i>
+							<strong>Увага!</strong> Реєструючись як лікар, ви підтверджуєте наявність медичної освіти та права на практику.
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="UserName" class="form-label"></label>
+							<div class="input-group">
+								<span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+								<input asp-for="UserName" class="form-control" placeholder="Введіть ім'я користувача" />
+							</div>
+							<span asp-validation-for="UserName" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Email" class="form-label"></label>
+							<div class="input-group">
+								<span class="input-group-text"><i class="bi bi-envelope"></i></span>
+								<input asp-for="Email" class="form-control" placeholder="Професійна email адреса" />
+							</div>
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Password" class="form-label"></label>
+							<div class="input-group">
+								<span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
+								<input asp-for="Password" class="form-control" placeholder="Створіть надійний пароль" />
+							</div>
+							<span asp-validation-for="Password" class="text-danger"></span>
+							<small class="form-text text-muted">
+								<i class="bi bi-info-circle"></i> Мінімум 8 символів, містить цифри, великі та малі літери
+							</small>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="ConfirmPassword" class="form-label"></label>
+							<div class="input-group">
+								<span class="input-group-text"><i class="bi bi-shield-lock-fill"></i></span>
+								<input asp-for="ConfirmPassword" class="form-control" placeholder="Підтвердіть пароль" />
+							</div>
+							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+						</div>
+
+						<div class="d-grid gap-2 mt-4">
+							<button type="submit" class="btn btn-success btn-lg">
+								<i class="bi bi-check-circle"></i> Зареєструватися як лікар
+							</button>
+							<a asp-action="Register" class="btn btn-outline-secondary">
+								<i class="bi bi-arrow-left"></i> Назад до вибору ролі
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />

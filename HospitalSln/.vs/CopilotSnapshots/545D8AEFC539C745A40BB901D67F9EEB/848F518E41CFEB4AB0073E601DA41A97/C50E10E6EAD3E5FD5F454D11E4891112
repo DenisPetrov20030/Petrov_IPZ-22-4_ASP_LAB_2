@@ -1,0 +1,151 @@
+﻿using HospitalSystem.Models;
+using HospitalSystem.Data.Library.Models;
+using HospitalSystem.Data.Library.Repositories;
+
+namespace HospitalSystem.Data
+{
+	public static class SeedData
+	{
+		public static void EnsurePopulated(IApplicationBuilder app)
+		{
+			using (var scope = app.ApplicationServices.CreateScope())
+			{
+				var context = scope.ServiceProvider.GetRequiredService<HospitalDbContext>();
+				
+				// context.Database.Migrate();
+
+				if (context.Doctors.Any() || context.Appointments.Any())
+				{
+					return;
+				}
+
+				var doctors = new[]
+				{
+					new Doctor
+					{
+						FullName = "Іванов Іван Іванович",
+						Specialization = "Терапевт",
+						Department = "Терапія",
+						PhoneNumber = "+380501234567",
+						Email = "ivanov@hospital.ua"
+					},
+					new Doctor
+					{
+						FullName = "Петрова Марія Петрівна",
+						Specialization = "Кардіолог",
+						Department = "Кардіологія",
+						PhoneNumber = "+380502345678",
+						Email = "petrova@hospital.ua"
+					},
+					new Doctor
+					{
+						FullName = "Сидоренко Олександр Миколайович",
+						Specialization = "Невролог",
+						Department = "Неврологія",
+						PhoneNumber = "+380503456789",
+						Email = "sydorenko@hospital.ua"
+					},
+					new Doctor
+					{
+						FullName = "Коваленко Тетяна Володимирівна",
+						Specialization = "Педіатр",
+						Department = "Педіатрія",
+						PhoneNumber = "+380504567890",
+						Email = "kovalenko@hospital.ua"
+					},
+					new Doctor
+					{
+						FullName = "Мельник Андрій Васильович",
+						Specialization = "Хірург",
+						Department = "Хірургія",
+						PhoneNumber = "+380505678901",
+						Email = "melnyk@hospital.ua"
+					}
+				};
+
+				context.Doctors.AddRange(doctors);
+				context.SaveChanges();
+
+				var appointments = new[]
+				{
+					new Appointment
+					{
+						PatientName = "Шевченко Петро Петрович",
+						DoctorName = "Іванов Іван Іванович",
+						DoctorID = doctors[0].DoctorID,
+						AppointmentDate = DateTime.Now.AddDays(1).AddHours(9),
+						Department = "Терапія",
+						Notes = "Планове обстеження"
+					},
+					new Appointment
+					{
+						PatientName = "Бондаренко Олена Миколаївна",
+						DoctorName = "Петрова Марія Петрівна",
+						DoctorID = doctors[1].DoctorID,
+						AppointmentDate = DateTime.Now.AddDays(1).AddHours(10),
+						Department = "Кардіологія",
+						Notes = "Консультація щодо болів у серці"
+					},
+					new Appointment
+					{
+						PatientName = "Ткаченко Василь Іванович",
+						DoctorName = "Сидоренко Олександр Миколайович",
+						DoctorID = doctors[2].DoctorID,
+						AppointmentDate = DateTime.Now.AddDays(2).AddHours(11),
+						Department = "Неврологія",
+						Notes = "Головні болі"
+					},
+					new Appointment
+					{
+						PatientName = "Морозова Ганна Сергіївна",
+						DoctorName = "Коваленко Тетяна Володимирівна",
+						DoctorID = doctors[3].DoctorID,
+						AppointmentDate = DateTime.Now.AddDays(2).AddHours(14),
+						Department = "Педіатрія",
+						Notes = "Профілактичний огляд дитини"
+					},
+					new Appointment
+					{
+						PatientName = "Литвиненко Дмитро Олександрович",
+						DoctorName = "Мельник Андрій Васильович",
+						DoctorID = doctors[4].DoctorID,
+						AppointmentDate = DateTime.Now.AddDays(3).AddHours(9),
+						Department = "Хірургія",
+						Notes = "Консультація перед операцією"
+					},
+					new Appointment
+					{
+						PatientName = "Кравчук Ірина Вікторівна",
+						DoctorName = "Іванов Іван Іванович",
+						DoctorID = doctors[0].DoctorID,
+						AppointmentDate = DateTime.Now.AddDays(3).AddHours(15),
+						Department = "Терапія",
+						Notes = "Повторна консультація"
+					},
+					new Appointment
+					{
+						PatientName = "Гончаренко Микола Григорович",
+						DoctorName = "Петрова Марія Петрівна",
+						DoctorID = doctors[1].DoctorID,
+						AppointmentDate = DateTime.Now.AddDays(4).AddHours(10),
+						Department = "Кардіологія",
+						Notes = "ЕКГ та консультація"
+					},
+					new Appointment
+					{
+						PatientName = "Савченко Юлія Анатоліївна",
+						DoctorName = "Сидоренко Олександр Миколайович",
+						AppointmentDate = DateTime.Now.AddDays(5).AddHours(12),
+						Department = "Неврологія",
+						Notes = "Без зв'язку з лікарем (приклад)"
+					}
+				};
+
+				context.Appointments.AddRange(appointments);
+				context.SaveChanges();
+
+				Console.WriteLine("База даних успішно заповнена тестовими даними!");
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "HospitalConnection": "Data Source=hospital_api.db",
+    "IdentityConnection": "Data Source=identity_api.db"
+  }
+}

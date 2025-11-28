@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using HospitalSystem.Models;
+using HospitalSystem.Data.Models;
+using HospitalSystem.Data.Repositories;
 using HospitalSystem.Models.ViewModels;
 using HospitalSystem.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HospitalSystem.Controllers
 {
+    [Authorize]
     public class AppointmentsController : Controller
     {
         private IHospitalRepository repository;
@@ -101,7 +104,7 @@ namespace HospitalSystem.Controllers
                 
                 HttpContext.Session.Remove(SessionKeyDraft);
                 
-                TempData["Success"] = "Новий запис створено!";
+                TempData["Success"] = "Запис успішно створено!";
                 return RedirectToAction("Index");
             }
             

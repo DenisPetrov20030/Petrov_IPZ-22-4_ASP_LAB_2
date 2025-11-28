@@ -1,0 +1,63 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace HospitalSystem.Models
+{
+	public class EFHospitalRepository : IHospitalRepository
+	{
+		private HospitalDbContext context;
+		public EFHospitalRepository(HospitalDbContext ctx)
+		{
+			context = ctx;
+		}
+
+		public IQueryable<Appointment> Appointments => context.Appointments.Include(a => a.Doctor);
+
+		public void CreateAppointment(Appointment appointment)
+		{
+			context.Appointments.Add(appointment);
+			context.SaveChanges();
+		}
+
+		public void UpdateAppointment(Appointment appointment)
+		{
+			context.Appointments.Update(appointment);
+			context.SaveChanges();
+		}
+
+		public void DeleteAppointment(Appointment appointment)
+		{
+			context.Appointments.Remove(appointment);
+			context.SaveChanges();
+		}
+
+		public Appointment? GetAppointmentById(long id)
+		{
+			return context.Appointments.Include(a => a.Doctor).FirstOrDefault(a => a.AppointmentID == id);
+		}
+
+		public IQueryable<Doctor> Doctors => context.Doctors.Include(d => d.Appointments);
+
+		public void CreateDoctor(Doctor doctor)
+		{
+			context.Doctors.Add(doctor);
+			context.SaveChanges();
+		}
+
+		public void UpdateDoctor(Doctor doctor)
+		{
+			context.Doctors.Update(doctor);
+			context.SaveChanges();
+		}
+
+		public void DeleteDoctor(Doctor doctor)
+		{
+			context.Doctors.Remove(doctor);
+			context.SaveChanges();
+		}
+
+		public Doctor? GetDoctorById(long id)
+		{
+			return context.Doctors.Include(d => d.Appointments).FirstOrDefault(d => d.DoctorID == id);
+		}
+	}
+}

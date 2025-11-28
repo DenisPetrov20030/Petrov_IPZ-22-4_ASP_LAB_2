@@ -1,4 +1,5 @@
 using HospitalSystem.Models;
+using HospitalSystem.Data.Models;
 
 namespace HospitalSystem.Data
 {

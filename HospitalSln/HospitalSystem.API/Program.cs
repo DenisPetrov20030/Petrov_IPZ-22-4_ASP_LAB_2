@@ -1,0 +1,137 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using HospitalSystem.Data.Models;
+using HospitalSystem.Data.Repositories;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+	c.SwaggerDoc("v1", new() { Title = "Hospital System API", Version = "v1" });
+	c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+	{
+		Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+		Name = "Authorization",
+		In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+		Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+		Scheme = "Bearer"
+	});
+	c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+	{
+		{
+			new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+			{
+				Reference = new Microsoft.OpenApi.Models.OpenApiReference
+				{
+					Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+					Id = "Bearer"
+				}
+			},
+			Array.Empty<string>()
+		}
+	});
+});
+
+builder.Services.AddDbContext<HospitalDbContext>(opts =>
+{
+	opts.UseSqlite(builder.Configuration["ConnectionStrings:HospitalConnection"],
+		b => b.MigrationsAssembly("HospitalSystem.API"));
+});
+
+builder.Services.AddDbContext<AppIdentityDbContext>(options =>
+	options.UseSqlite(builder.Configuration["ConnectionStrings:IdentityConnection"],
+		b => b.MigrationsAssembly("HospitalSystem.API"))
+);
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+	options.Password.RequiredLength = 8;
+	options.Password.RequireDigit = true;
+	options.Password.RequireUppercase = true;
+	options.Password.RequireLowercase = true;
+	options.Password.RequireNonAlphanumeric = false;
+	options.User.RequireUniqueEmail = true;
+})
+.AddEntityFrameworkStores<AppIdentityDbContext>()
+.AddDefaultTokenProviders();
+
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"] ?? "YourSecretKeyForJWTTokenGeneration123456789";
+
+builder.Services.AddAuthentication(options =>
+{
+	options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+	options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+	options.TokenValidationParameters = new TokenValidationParameters
+	{
+		ValidateIssuer = true,
+		ValidateAudience = true,
+		ValidateLifetime = true,
+		ValidateIssuerSigningKey = true,
+		ValidIssuer = jwtSettings["Issuer"] ?? "HospitalSystemAPI",
+		ValidAudience = jwtSettings["Audience"] ?? "HospitalSystemClient",
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+	};
+});
+
+builder.Services.AddScoped<IHospitalRepository, EFHospitalRepository>();
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAll", builder =>
+	{
+		builder.AllowAnyOrigin()
+			   .AllowAnyMethod()
+			   .AllowAnyHeader();
+	});
+});
+
+var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+	var services = scope.ServiceProvider;
+	
+	var hospitalContext = services.GetRequiredService<HospitalDbContext>();
+	hospitalContext.Database.EnsureCreated();
+	
+	var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+	identityContext.Database.EnsureCreated();
+	
+	var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+	string[] roles = { "Patient", "Doctor", "Admin" };
+
+	foreach (var role in roles)
+	{
+		if (!await roleManager.RoleExistsAsync(role))
+		{
+			await roleManager.CreateAsync(new IdentityRole(role));
+		}
+	}
+}
+
+if (app.Environment.IsDevelopment())
+{
+	app.UseSwagger();
+	app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hospital System API v1"));
+}
+
+app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

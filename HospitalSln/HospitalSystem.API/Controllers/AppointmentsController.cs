@@ -1,0 +1,119 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using HospitalSystem.Data.Models;
+using HospitalSystem.Data.Repositories;
+
+namespace HospitalSystem.API.Controllers
+{
+	[Route("api/[controller]")]
+	[ApiController]
+	[Authorize]
+	public class AppointmentsController : ControllerBase
+	{
+		private readonly IHospitalRepository _repository;
+
+		public AppointmentsController(IHospitalRepository repository)
+		{
+			_repository = repository;
+		}
+
+		[HttpGet]
+		public IActionResult GetAll([FromQuery] string? department, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+		{
+			var query = _repository.Appointments.AsQueryable();
+
+			if (!string.IsNullOrEmpty(department))
+			{
+				query = query.Where(a => a.Department == department);
+			}
+
+			var totalItems = query.Count();
+			var appointments = query
+				.OrderBy(a => a.AppointmentDate)
+				.Skip((page - 1) * pageSize)
+				.Take(pageSize)
+				.ToList();
+
+			return Ok(new
+			{
+				data = appointments,
+				totalItems = totalItems,
+				page = page,
+				pageSize = pageSize,
+				totalPages = (int)Math.Ceiling(totalItems / (double)pageSize)
+			});
+		}
+
+		[HttpGet("{id}")]
+		public IActionResult GetById(long id)
+		{
+			var appointment = _repository.GetAppointmentById(id);
+			if (appointment == null)
+			{
+				return NotFound(new { message = "Запис не знайдено" });
+			}
+			return Ok(appointment);
+		}
+
+		[HttpPost]
+		public IActionResult Create([FromBody] Appointment appointment)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			_repository.CreateAppointment(appointment);
+			return CreatedAtAction(nameof(GetById), new { id = appointment.AppointmentID }, appointment);
+		}
+
+		[HttpPut("{id}")]
+		public IActionResult Update(long id, [FromBody] Appointment appointment)
+		{
+			if (id != appointment.AppointmentID)
+			{
+				return BadRequest(new { message = "ID не співпадає" });
+			}
+
+			var existing = _repository.GetAppointmentById(id);
+			if (existing == null)
+			{
+				return NotFound(new { message = "Запис не знайдено" });
+			}
+
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			_repository.UpdateAppointment(appointment);
+			return NoContent();
+		}
+
+		[HttpDelete("{id}")]
+		[Authorize(Roles = "Doctor,Admin")]
+		public IActionResult Delete(long id)
+		{
+			var appointment = _repository.GetAppointmentById(id);
+			if (appointment == null)
+			{
+				return NotFound(new { message = "Запис не знайдено" });
+			}
+
+			_repository.DeleteAppointment(appointment);
+			return NoContent();
+		}
+
+		[HttpGet("departments")]
+		public IActionResult GetDepartments()
+		{
+			var departments = _repository.Appointments
+				.Select(a => a.Department)
+				.Distinct()
+				.OrderBy(d => d)
+				.ToList();
+
+			return Ok(departments);
+		}
+	}
+}

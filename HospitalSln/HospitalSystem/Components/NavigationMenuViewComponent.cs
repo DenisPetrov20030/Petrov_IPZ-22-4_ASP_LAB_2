@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using HospitalSystem.Models;
+using HospitalSystem.Data.Repositories;
 
 namespace HospitalSystem.Components
 {

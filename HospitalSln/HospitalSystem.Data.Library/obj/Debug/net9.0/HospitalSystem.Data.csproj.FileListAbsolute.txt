@@ -1,0 +1,12 @@
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\bin\Debug\net9.0\HospitalSystem.Data.deps.json
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\bin\Debug\net9.0\HospitalSystem.Data.dll
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\bin\Debug\net9.0\HospitalSystem.Data.pdb
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\HospitalSystem.Data.csproj.AssemblyReference.cache
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\HospitalSystem.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\HospitalSystem.Data.AssemblyInfoInputs.cache
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\HospitalSystem.Data.AssemblyInfo.cs
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\HospitalSystem.Data.csproj.CoreCompileInputs.cache
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\HospitalSystem.Data.dll
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\refint\HospitalSystem.Data.dll
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\HospitalSystem.Data.pdb
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem.Data.Library\obj\Debug\net9.0\ref\HospitalSystem.Data.dll

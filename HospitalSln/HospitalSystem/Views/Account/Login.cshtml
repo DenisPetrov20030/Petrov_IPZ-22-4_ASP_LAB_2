@@ -1,0 +1,118 @@
+@model HospitalSystem.Models.ViewModels.LoginModel
+
+<div class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-md-10">
+			@if (TempData["Success"] != null)
+			{
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<i class="bi bi-check-circle"></i> @TempData["Success"]
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				</div>
+			}
+
+			<h2 class="text-center mb-5">
+				<i class="bi bi-box-arrow-in-right"></i> Вхід до HospitalSystem
+			</h2>
+
+			<div class="row g-4">
+				<div class="col-md-6">
+					<div class="card shadow-sm h-100">
+						<div class="card-header text-white"
+							style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+							<h5><i class="bi bi-person-heart"></i> Вхід для пацієнтів</h5>
+						</div>
+						<div class="card-body">
+							<form asp-action="Login" method="post">
+								<div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+								<input type="hidden" asp-for="ReturnUrl" />
+
+								<div class="mb-3">
+									<label asp-for="UserName" class="form-label"></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-person"></i></span>
+										<input asp-for="UserName" class="form-control"
+											placeholder="Ім'я або Email" />
+									</div>
+									<span asp-validation-for="UserName" class="text-danger"></span>
+								</div>
+
+								<div class="mb-3">
+									<label asp-for="Password" class="form-label"></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-lock"></i></span>
+										<input asp-for="Password" class="form-control" placeholder="Пароль" />
+									</div>
+									<span asp-validation-for="Password" class="text-danger"></span>
+								</div>
+
+								<div class="d-grid gap-2">
+									<button type="submit" class="btn btn-primary btn-lg">
+										<i class="bi bi-box-arrow-in-right"></i> Увійти
+									</button>
+								</div>
+							</form>
+							<hr class="my-3" />
+							<div class="text-center">
+								<small class="text-muted">Немає акаунту?</small><br />
+								<a asp-action="RegisterPatient" class="text-decoration-none">
+									<i class="bi bi-person-plus"></i> Зареєструватися як пацієнт
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="card shadow-sm h-100">
+						<div class="card-header bg-success text-white">
+							<h5><i class="bi bi-heart-pulse-fill"></i> Вхід для лікарів</h5>
+						</div>
+						<div class="card-body">
+							<form asp-action="Login" method="post">
+								<div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+								<input type="hidden" asp-for="ReturnUrl" />
+
+								<div class="mb-3">
+									<label asp-for="UserName" class="form-label"></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+										<input asp-for="UserName" class="form-control"
+											placeholder="Ім'я або Email" />
+									</div>
+									<span asp-validation-for="UserName" class="text-danger"></span>
+								</div>
+
+								<div class="mb-3">
+									<label asp-for="Password" class="form-label"></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
+										<input asp-for="Password" class="form-control" placeholder="Пароль" />
+									</div>
+									<span asp-validation-for="Password" class="text-danger"></span>
+								</div>
+
+								<div class="d-grid gap-2">
+									<button type="submit" class="btn btn-success btn-lg">
+										<i class="bi bi-box-arrow-in-right"></i> Увійти
+									</button>
+								</div>
+							</form>
+							<hr class="my-3" />
+							<div class="text-center">
+								<small class="text-muted">Немає акаунту?</small><br />
+								<a asp-action="RegisterDoctor" class="text-decoration-none text-success">
+									<i class="bi bi-briefcase-fill"></i> Зареєструватися як лікар
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
