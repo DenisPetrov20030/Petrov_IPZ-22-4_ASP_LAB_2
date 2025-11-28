@@ -1,0 +1,172 @@
+@page "/appointments/edit/{id:long}"
+@attribute [Authorize]
+@inject AppointmentService AppointmentService
+@inject DoctorService DoctorService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Редагувати запис - Hospital System</PageTitle>
+
+<div class="container py-4">
+	@if (isLoading)
+	{
+		<div class="text-center py-5">
+			<div class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Завантаження...</span>
+			</div>
+		</div>
+	}
+	else if (appointment == null)
+	{
+		<div class="alert alert-danger" role="alert">
+			<i class="bi bi-exclamation-triangle"></i> Запис не знайдено
+		</div>
+	}
+	else
+	{
+		<div class="card shadow">
+			<div class="card-header bg-warning">
+				<h4 class="mb-0"><i class="bi bi-pencil"></i> Редагування запису</h4>
+			</div>
+			<div class="card-body">
+				@if (!string.IsNullOrEmpty(errorMessage))
+				{
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<i class="bi bi-exclamation-triangle"></i> @errorMessage
+						<button type="button" class="btn-close" @onclick="@(() => errorMessage = null)"></button>
+					</div>
+				}
+
+				<EditForm Model="@appointment" OnValidSubmit="@HandleSubmit">
+					<DataAnnotationsValidator />
+					<ValidationSummary class="text-danger" />
+
+					<div class="mb-3">
+						<label for="patientName" class="form-label">Ім'я пацієнта *</label>
+						<InputText id="patientName" @bind-Value="appointment.PatientName" class="form-control" />
+						<ValidationMessage For="@(() => appointment.PatientName)" />
+					</div>
+
+					<div class="mb-3">
+						<label for="doctorName" class="form-label">Ім'я лікаря *</label>
+						<InputText id="doctorName" @bind-Value="appointment.DoctorName" class="form-control" />
+						<ValidationMessage For="@(() => appointment.DoctorName)" />
+					</div>
+
+					<div class="mb-3">
+						<label for="doctorId" class="form-label">Лікар (зв'язок)</label>
+						<InputSelect id="doctorId" @bind-Value="appointment.DoctorID" class="form-select">
+							<option value="">-- Не вибрано --</option>
+							@if (doctors != null)
+							{
+								@foreach (var doctor in doctors)
+								{
+									<option value="@doctor.DoctorID">@doctor.FullName - @doctor.Specialization</option>
+								}
+							}
+						</InputSelect>
+					</div>
+
+					<div class="mb-3">
+						<label for="appointmentDate" class="form-label">Дата та час *</label>
+						<InputDate Type="InputDateType.DateTimeLocal" id="appointmentDate" @bind-Value="appointment.AppointmentDate" class="form-control" />
+						<ValidationMessage For="@(() => appointment.AppointmentDate)" />
+					</div>
+
+					<div class="mb-3">
+						<label for="department" class="form-label">Відділення *</label>
+						<InputText id="department" @bind-Value="appointment.Department" class="form-control" />
+						<ValidationMessage For="@(() => appointment.Department)" />
+					</div>
+
+					<div class="mb-3">
+						<label for="notes" class="form-label">Примітки</label>
+						<InputTextArea id="notes" @bind-Value="appointment.Notes" class="form-control" rows="3" />
+						<ValidationMessage For="@(() => appointment.Notes)" />
+					</div>
+
+					<div class="d-flex justify-content-between">
+						<div>
+							<button type="submit" class="btn btn-warning" disabled="@isSaving">
+								@if (isSaving)
+								{
+									<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+									<span>Збереження...</span>
+								}
+								else
+								{
+									<span><i class="bi bi-save"></i> Оновити</span>
+								}
+							</button>
+						</div>
+						<a href="/appointments" class="btn btn-outline-secondary">
+							<i class="bi bi-x-circle"></i> Скасувати
+						</a>
+					</div>
+				</EditForm>
+			</div>
+		</div>
+	}
+</div>
+
+@code {
+	[Parameter]
+	public long Id { get; set; }
+
+	private Appointment? appointment;
+	private List<Doctor>? doctors;
+	private string? errorMessage;
+	private bool isLoading = true;
+	private bool isSaving = false;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadData();
+	}
+
+	private async Task LoadData()
+	{
+		isLoading = true;
+		try
+		{
+			appointment = await AppointmentService.GetAppointmentByIdAsync(Id);
+			doctors = await DoctorService.GetDoctorsAsync();
+		}
+		catch (Exception ex)
+		{
+			errorMessage = $"Помилка завантаження: {ex.Message}";
+		}
+		finally
+		{
+			isLoading = false;
+		}
+	}
+
+	private async Task HandleSubmit()
+	{
+		if (appointment == null) return;
+
+		isSaving = true;
+		errorMessage = null;
+
+		try
+		{
+			var success = await AppointmentService.UpdateAppointmentAsync(Id, appointment);
+			if (success)
+			{
+				NavigationManager.NavigateTo("/appointments");
+			}
+			else
+			{
+				errorMessage = "Помилка оновлення запису. Перевірте дані та спробуйте ще раз.";
+			}
+		}
+		catch (Exception ex)
+		{
+			errorMessage = $"Помилка: {ex.Message}";
+		}
+		finally
+		{
+			isSaving = false;
+		}
+	}
+}

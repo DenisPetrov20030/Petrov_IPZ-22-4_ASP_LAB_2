@@ -1129,10 +1129,10 @@ D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebas
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.development.json
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\Hospital.01BB3FEA.Up2Date
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.dll
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\refint\HospitalSystem.dll
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.pdb
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\HospitalSystem.genruntimeconfig.cache
 D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\ref\HospitalSystem.dll
+D:\Projects\ZTU\ASP\Lab4\HospitalSln\HospitalSystem\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

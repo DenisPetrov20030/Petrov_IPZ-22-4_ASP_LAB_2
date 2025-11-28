@@ -1,0 +1,128 @@
+@page "/register"
+@inject AuthService AuthService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Реєстрація - Hospital System</PageTitle>
+
+<div class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6 col-lg-5">
+			<div class="card shadow">
+				<div class="card-header bg-success text-white">
+					<h4 class="mb-0"><i class="bi bi-person-plus"></i> Реєстрація</h4>
+				</div>
+				<div class="card-body">
+					@if (!string.IsNullOrEmpty(errorMessage))
+					{
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<i class="bi bi-exclamation-triangle"></i> @errorMessage
+							<button type="button" class="btn-close" @onclick="@(() => errorMessage = null)"></button>
+						</div>
+					}
+
+					@if (!string.IsNullOrEmpty(successMessage))
+					{
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							<i class="bi bi-check-circle"></i> @successMessage
+							<button type="button" class="btn-close" @onclick="@(() => successMessage = null)"></button>
+						</div>
+					}
+
+					<EditForm Model="@registerModel" OnValidSubmit="@HandleRegister">
+						<DataAnnotationsValidator />
+						<ValidationSummary class="text-danger" />
+
+						<div class="mb-3">
+							<label for="username" class="form-label">Ім'я користувача *</label>
+							<InputText id="username" @bind-Value="registerModel.UserName" class="form-control" placeholder="Введіть ім'я користувача" />
+							<ValidationMessage For="@(() => registerModel.UserName)" />
+						</div>
+
+						<div class="mb-3">
+							<label for="email" class="form-label">Email *</label>
+							<InputText id="email" @bind-Value="registerModel.Email" class="form-control" placeholder="example@email.com" />
+							<ValidationMessage For="@(() => registerModel.Email)" />
+						</div>
+
+						<div class="mb-3">
+							<label for="password" class="form-label">Пароль *</label>
+							<InputText id="password" type="password" @bind-Value="registerModel.Password" class="form-control" placeholder="Пароль" />
+							<ValidationMessage For="@(() => registerModel.Password)" />
+						</div>
+
+						<div class="mb-3">
+							<label for="confirmPassword" class="form-label">Підтвердження пароля *</label>
+							<InputText id="confirmPassword" type="password" @bind-Value="registerModel.ConfirmPassword" class="form-control" placeholder="Пароль" />
+							<ValidationMessage For="@(() => registerModel.ConfirmPassword)" />
+						</div>
+
+						<div class="mb-3">
+							<label for="role" class="form-label">Роль</label>
+							<InputSelect id="role" @bind-Value="registerModel.Role" class="form-select">
+								<option value="Patient">Пацієнт</option>
+								<option value="Doctor">Лікар</option>
+							</InputSelect>
+						</div>
+
+						<div class="d-grid gap-2">
+							<button type="submit" class="btn btn-success" disabled="@isLoading">
+								@if (isLoading)
+								{
+									<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+									<span>Завантаження...</span>
+								}
+								else
+								{
+									<span><i class="bi bi-person-plus"></i> Зареєструватись</span>
+								}
+							</button>
+						</div>
+					</EditForm>
+
+					<hr class="my-4" />
+
+					<div class="text-center">
+						<p class="mb-0">Вже є акаунт? <a href="/login">Увійти</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+	private RegisterDto registerModel = new();
+	private string? errorMessage;
+	private string? successMessage;
+	private bool isLoading = false;
+
+	private async Task HandleRegister()
+	{
+		isLoading = true;
+		errorMessage = null;
+		successMessage = null;
+
+		try
+		{
+			var result = await AuthService.RegisterAsync(registerModel);
+			if (result)
+			{
+				successMessage = "Реєстрація успішна! Зараз ви можете увійти.";
+				await Task.Delay(2000);
+				NavigationManager.NavigateTo("/login");
+			}
+			else
+			{
+				errorMessage = "Помилка реєстрації. Можливо, користувач з таким email вже існує.";
+			}
+		}
+		catch (Exception ex)
+		{
+			errorMessage = $"Помилка: {ex.Message}";
+		}
+		finally
+		{
+			isLoading = false;
+		}
+	}
+}

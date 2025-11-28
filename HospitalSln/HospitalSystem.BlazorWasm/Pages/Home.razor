@@ -1,0 +1,87 @@
+@page "/"
+
+<PageTitle>Головна - Hospital System</PageTitle>
+
+<div class="container py-5">
+	<div class="row">
+		<div class="col-12 text-center mb-5">
+			<h1 class="display-4">Система управління лікарнею</h1>
+			<p class="lead text-muted">Платформа для керування записами на прийом та даними лікарів</p>
+		</div>
+	</div>
+
+	<div class="row g-4">
+		<div class="col-md-6">
+			<div class="card h-100 shadow-sm">
+				<div class="card-body text-center p-5">
+					<div class="mb-4">
+						<i class="bi bi-person-fill display-1 text-primary"></i>
+					</div>
+					<h3 class="card-title mb-3">Лікарі</h3>
+					<p class="card-text text-muted mb-4">
+						Керуйте інформацією про лікарів, їх спеціалізацією та контактними даними
+					</p>
+					<a href="/doctors" class="btn btn-primary btn-lg">
+						<i class="bi bi-arrow-right-circle"></i> Переглянути лікарів
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="card h-100 shadow-sm">
+				<div class="card-body text-center p-5">
+					<div class="mb-4">
+						<i class="bi bi-calendar-check-fill display-1 text-success"></i>
+					</div>
+					<h3 class="card-title mb-3">Записи на прийом</h3>
+					<p class="card-text text-muted mb-4">
+						Створюйте та керуйте записами пацієнтів на прийом до лікарів
+					</p>
+					<a href="/appointments" class="btn btn-success btn-lg">
+						<i class="bi bi-arrow-right-circle"></i> Переглянути записи
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="col-12">
+			<div class="card bg-light border-0">
+				<div class="card-body p-4">
+					<h4 class="mb-3">Можливості системи</h4>
+					<div class="row">
+						<div class="col-md-4 mb-3">
+							<div class="d-flex align-items-start">
+								<i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+								<div>
+									<h6>CRUD операції</h6>
+									<p class="text-muted small mb-0">Повний контроль над даними лікарів та записів</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<div class="d-flex align-items-start">
+								<i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+								<div>
+									<h6>Валідація форм</h6>
+									<p class="text-muted small mb-0">Автоматична перевірка введених даних</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<div class="d-flex align-items-start">
+								<i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+								<div>
+									<h6>Сучасний інтерфейс</h6>
+									<p class="text-muted small mb-0">Зручний та інтуїтивно зрозумілий UI</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

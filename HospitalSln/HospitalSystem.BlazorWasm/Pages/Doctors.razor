@@ -1,0 +1,101 @@
+@page "/doctors"
+@attribute [Authorize]
+@inject DoctorService DoctorService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Лікарі - Hospital System</PageTitle>
+
+<div class="container py-4">
+	<div class="d-flex justify-content-between align-items-center mb-4">
+		<h2 class="mb-0">Лікарі</h2>
+		<a href="/doctors/create" class="btn btn-primary">
+			<i class="bi bi-plus-circle"></i> Додати лікаря
+		</a>
+	</div>
+
+	@if (isLoading)
+	{
+		<div class="text-center py-5">
+			<div class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Завантаження...</span>
+			</div>
+			<p class="mt-2">Завантаження лікарів...</p>
+		</div>
+	}
+	else if (errorMessage != null)
+	{
+		<div class="alert alert-danger" role="alert">
+			<i class="bi bi-exclamation-triangle"></i> @errorMessage
+		</div>
+	}
+	else if (doctors == null || !doctors.Any())
+	{
+		<div class="alert alert-info text-center" role="alert">
+			<i class="bi bi-info-circle"></i> Немає зареєстрованих лікарів
+		</div>
+	}
+	else
+	{
+		<div class="row">
+			@foreach (var doctor in doctors)
+			{
+				<div class="col-md-6 col-lg-4 mb-4">
+					<div class="card h-100 shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">@doctor.FullName</h5>
+							<p class="card-text">
+								<strong>Спеціалізація:</strong> @doctor.Specialization<br />
+								<strong>Відділення:</strong> @doctor.Department<br />
+								<strong>Телефон:</strong> @doctor.PhoneNumber<br />
+								<strong>Email:</strong> @doctor.Email
+							</p>
+						</div>
+						<div class="card-footer bg-transparent">
+							<div class="d-flex justify-content-between">
+								<a href="/doctors/details/@doctor.DoctorID" class="btn btn-sm btn-outline-primary">
+									<i class="bi bi-eye"></i> Деталі
+								</a>
+								<a href="/doctors/edit/@doctor.DoctorID" class="btn btn-sm btn-outline-warning">
+									<i class="bi bi-pencil"></i> Редагувати
+								</a>
+								<a href="/doctors/delete/@doctor.DoctorID" class="btn btn-sm btn-outline-danger">
+									<i class="bi bi-trash"></i> Видалити
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	}
+</div>
+
+@code {
+	private List<Doctor>? doctors;
+	private string? errorMessage;
+	private bool isLoading = true;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadDoctors();
+	}
+
+	private async Task LoadDoctors()
+	{
+		isLoading = true;
+		errorMessage = null;
+
+		try
+		{
+			doctors = await DoctorService.GetDoctorsAsync();
+		}
+		catch (Exception ex)
+		{
+			errorMessage = $"Помилка: {ex.Message}";
+		}
+		finally
+		{
+			isLoading = false;
+		}
+	}
+}

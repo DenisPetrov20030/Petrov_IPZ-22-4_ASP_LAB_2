@@ -1,0 +1,138 @@
+@page "/appointments/create"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@inject AppointmentService AppointmentService
+@inject DoctorService DoctorService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Створити запис - Hospital System</PageTitle>
+
+<div class="container py-4">
+	<div class="card shadow">
+		<div class="card-header bg-primary text-white">
+			<h4 class="mb-0"><i class="bi bi-plus-circle"></i> Новий запис до лікаря</h4>
+		</div>
+		<div class="card-body">
+			@if (!string.IsNullOrEmpty(errorMessage))
+			{
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<i class="bi bi-exclamation-triangle"></i> @errorMessage
+					<button type="button" class="btn-close" @onclick="@(() => errorMessage = null)"></button>
+				</div>
+			}
+
+			<EditForm Model="@appointment" OnValidSubmit="@HandleSubmit">
+				<DataAnnotationsValidator />
+				<ValidationSummary class="text-danger" />
+
+				<div class="mb-3">
+					<label for="patientName" class="form-label">Ім'я пацієнта *</label>
+					<InputText id="patientName" @bind-Value="appointment.PatientName" class="form-control" placeholder="Введіть ім'я пацієнта" />
+					<ValidationMessage For="@(() => appointment.PatientName)" />
+				</div>
+
+				<div class="mb-3">
+					<label for="doctorName" class="form-label">Ім'я лікаря *</label>
+					<InputText id="doctorName" @bind-Value="appointment.DoctorName" class="form-control" placeholder="Введіть ім'я лікаря" />
+					<ValidationMessage For="@(() => appointment.DoctorName)" />
+				</div>
+
+				<div class="mb-3">
+					<label for="doctorId" class="form-label">Лікар (зв'язок)</label>
+					<InputSelect id="doctorId" @bind-Value="appointment.DoctorID" class="form-select">
+						<option value="">-- Не вибрано --</option>
+						@if (doctors != null)
+						{
+							@foreach (var doctor in doctors)
+							{
+								<option value="@doctor.DoctorID">@doctor.FullName - @doctor.Specialization</option>
+							}
+						}
+					</InputSelect>
+					<small class="form-text text-muted">Оберіть лікаря зі списку для встановлення зв'язку</small>
+				</div>
+
+				<div class="mb-3">
+					<label for="appointmentDate" class="form-label">Дата та час *</label>
+					<InputDate Type="InputDateType.DateTimeLocal" id="appointmentDate" @bind-Value="appointment.AppointmentDate" class="form-control" />
+					<ValidationMessage For="@(() => appointment.AppointmentDate)" />
+				</div>
+
+				<div class="mb-3">
+					<label for="department" class="form-label">Відділення *</label>
+					<InputText id="department" @bind-Value="appointment.Department" class="form-control" placeholder="Наприклад: Кардіологія" />
+					<ValidationMessage For="@(() => appointment.Department)" />
+				</div>
+
+				<div class="mb-3">
+					<label for="notes" class="form-label">Примітки</label>
+					<InputTextArea id="notes" @bind-Value="appointment.Notes" class="form-control" rows="3" placeholder="Додаткова інформація..." />
+					<ValidationMessage For="@(() => appointment.Notes)" />
+				</div>
+
+				<div class="d-flex justify-content-between">
+					<div>
+						<button type="submit" class="btn btn-success" disabled="@isLoading">
+							@if (isLoading)
+							{
+								<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+								<span>Збереження...</span>
+							}
+							else
+							{
+								<span><i class="bi bi-check-circle"></i> Зберегти</span>
+							}
+						</button>
+					</div>
+					<a href="/appointments" class="btn btn-outline-secondary">
+						<i class="bi bi-x-circle"></i> Скасувати
+					</a>
+				</div>
+			</EditForm>
+		</div>
+	</div>
+</div>
+
+@code {
+	private Appointment appointment = new() { AppointmentDate = DateTime.Now.AddDays(1) };
+	private List<Doctor>? doctors;
+	private string? errorMessage;
+	private bool isLoading = false;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadDoctors();
+	}
+
+	private async Task LoadDoctors()
+	{
+		doctors = await DoctorService.GetDoctorsAsync();
+	}
+
+	private async Task HandleSubmit()
+	{
+		isLoading = true;
+		errorMessage = null;
+
+		try
+		{
+			var success = await AppointmentService.CreateAppointmentAsync(appointment);
+			if (success)
+			{
+				NavigationManager.NavigateTo("/appointments");
+			}
+			else
+			{
+				errorMessage = "Помилка створення запису. Перевірте дані та спробуйте ще раз.";
+			}
+		}
+		catch (Exception ex)
+		{
+			errorMessage = $"Помилка: {ex.Message}";
+		}
+		finally
+		{
+			isLoading = false;
+		}
+	}
+}

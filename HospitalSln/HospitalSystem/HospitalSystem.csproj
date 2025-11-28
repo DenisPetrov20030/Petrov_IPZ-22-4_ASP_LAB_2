@@ -30,4 +30,8 @@
     <Folder Include="HospitalSystem.Data\HospitalSystem.API\Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\HospitalSystem.BlazorWasm\Layout\AuthorizeView.razor" Link="AuthorizeView.razor" />
+  </ItemGroup>
+
 </Project>

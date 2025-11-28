@@ -1,0 +1,103 @@
+@page "/doctors/details/{id:long}"
+@attribute [Microsoft.AspNetCore.Authorization.Authorize]
+@inject DoctorService DoctorService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Деталі лікаря - Hospital System</PageTitle>
+
+<div class="container py-4">
+	@if (isLoading)
+	{
+		<div class="text-center py-5">
+			<div class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Завантаження...</span>
+			</div>
+		</div>
+	}
+	else if (doctor == null)
+	{
+		<div class="alert alert-danger" role="alert">
+			<i class="bi bi-exclamation-triangle"></i> Лікаря не знайдено
+		</div>
+	}
+	else
+	{
+		<div class="card shadow">
+			<div class="card-header bg-info text-white">
+				<h4 class="mb-0"><i class="bi bi-info-circle"></i> Деталі лікаря</h4>
+			</div>
+			<div class="card-body">
+				<dl class="row">
+					<dt class="col-sm-4">ID лікаря:</dt>
+					<dd class="col-sm-8">@doctor.DoctorID</dd>
+
+					<dt class="col-sm-4">Повне ім'я:</dt>
+					<dd class="col-sm-8"><strong>@doctor.FullName</strong></dd>
+
+					<dt class="col-sm-4">Спеціалізація:</dt>
+					<dd class="col-sm-8"><span class="badge bg-primary">@doctor.Specialization</span></dd>
+
+					<dt class="col-sm-4">Відділення:</dt>
+					<dd class="col-sm-8"><span class="badge bg-info">@doctor.Department</span></dd>
+
+					<dt class="col-sm-4">Номер телефону:</dt>
+					<dd class="col-sm-8">
+						<i class="bi bi-telephone"></i> @doctor.PhoneNumber
+					</dd>
+
+					<dt class="col-sm-4">Електронна пошта:</dt>
+					<dd class="col-sm-8">
+						<i class="bi bi-envelope"></i> <a href="mailto:@doctor.Email">@doctor.Email</a>
+					</dd>
+
+					@if (doctor.Appointments != null && doctor.Appointments.Any())
+					{
+						<dt class="col-sm-4">Кількість записів:</dt>
+						<dd class="col-sm-8">
+							<span class="badge bg-success">@doctor.Appointments.Count</span>
+						</dd>
+					}
+				</dl>
+
+				<div class="mt-4 d-flex justify-content-between">
+					<div>
+						<a href="/doctors/edit/@doctor.DoctorID" class="btn btn-warning">
+							<i class="bi bi-pencil"></i> Редагувати
+						</a>
+						<a href="/doctors/delete/@doctor.DoctorID" class="btn btn-danger">
+							<i class="bi bi-trash"></i> Видалити
+						</a>
+					</div>
+					<a href="/doctors" class="btn btn-outline-secondary">
+						<i class="bi bi-arrow-left"></i> Назад до списку
+					</a>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+
+@code {
+	[Parameter]
+	public long Id { get; set; }
+
+	private Doctor? doctor;
+	private bool isLoading = true;
+
+	protected override async Task OnInitializedAsync()
+	{
+		isLoading = true;
+		try
+		{
+			doctor = await DoctorService.GetDoctorByIdAsync(Id);
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"Error loading doctor: {ex.Message}");
+		}
+		finally
+		{
+			isLoading = false;
+		}
+	}
+}
